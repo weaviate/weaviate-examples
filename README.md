@@ -11,7 +11,7 @@ Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – 
 
 * [Examples](#examples)
   * Information Retrieval with BERT
-* [Blog posts](#blog-posts-and-videos)
+* [Blog posts](#blog-posts)
 * [Videos](#videos)
 
 ## Examples

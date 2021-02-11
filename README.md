@@ -18,7 +18,7 @@ Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – 
 
 |Title|Language|Description|
 |---|---|---|
-| [Information Retrieval with BERT](bert-information-retrieval) | Python (Jupyter Notebook) | In this example we are going to use a BERT transformer to vectorize text documents, then retrieve the closest ones through Weaviate's Search |
+| [Information Retrieval with BERT](bert-information-retrieval) | Python (Jupyter Notebook) | In this example we are going to use a BERT transformer to vectorize text documents, then retrieve the closest ones through Weaviate's Search | Python | 
 | [Unmask Superheroes in 5 steps using the Weaviate NLP module](unmaks-superheroes) | Super simple 5 step guide to get started with the Weaviate NLP modules |
 
 ## Blog posts

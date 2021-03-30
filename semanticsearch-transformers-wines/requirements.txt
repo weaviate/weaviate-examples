@@ -1,0 +1,2 @@
+weaviate_client==2.1.0
+pandas==1.0.3

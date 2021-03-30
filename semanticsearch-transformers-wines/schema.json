@@ -1,0 +1,17 @@
+{
+    "classes": [
+        {
+            "class": "Wine",
+            "properties": [
+                {
+                    "name": "title",
+                    "dataType": ["text"]
+                },
+                {
+                    "name": "description",
+                    "dataType": ["text"]
+                }
+            ]
+        }
+    ]
+}

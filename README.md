@@ -3,7 +3,11 @@
 List of examples and tutorials of how to use the Vector Search Engine
 Weaviate for cool machine-learning related tasks.
 
-Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – [Github](https://www.semi.technology/developers/weaviate/current/)
+### Running Weaviate
+
+* Most examples assume you have a Weaviate running. You can run one locally by following [this installation guide](https://www.semi.technology/developers/weaviate/current/getting-started/installation.html#customize-your-weaviate-setup) in the documentation.
+  * If you need a specific vectorizer module, it will be explained in the tutorial.
+* Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – [Github](https://www.semi.technology/developers/weaviate/current/)
 
 ## Examples
 

@@ -9,7 +9,7 @@
       - '8080'
       - --scheme
       - http
-      image: semitechnologies/weaviate:1.6.0
+      image: semitechnologies/weaviate:1.7.0
       ports:
       - 8080:8080
       restart: on-failure:0

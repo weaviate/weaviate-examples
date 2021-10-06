@@ -41,7 +41,6 @@ def add_wines(data, batch_size=512, debug_mode=False):
     :type debug_mode: bool, optional
     """    
 
-    batch = weaviate.ObjectsBatchRequest()
     no_items_in_batch = 0
 
     for index, row in data.iterrows():
@@ -52,11 +51,11 @@ def add_wines(data, batch_size=512, debug_mode=False):
 
         wine_uuid = helper.generate_uuid('wine', row["title"]+row["description"])
 
-        batch.add(wine_object, "Wine", wine_uuid)
+        client.batch.add_data_object(wine_object, "Wine", wine_uuid)
         no_items_in_batch += 1
 
         if no_items_in_batch >= batch_size:
-            results = client.batch.create(batch)
+            results = client.batch.create_objects()
             
             if debug_mode:
                 for result in results:
@@ -66,9 +65,8 @@ def add_wines(data, batch_size=512, debug_mode=False):
                 message = str(index) + ' / ' + str(data.shape[0]) +  ' items imported'
                 helper.log(message)
 
-            batch = weaviate.ObjectsBatchRequest()
             no_items_in_batch = 0
 
-    client.batch.create(batch)
+    client.batch.create_objects()
 
 add_wines(df.head(2500), batch_size=99, debug_mode=True)

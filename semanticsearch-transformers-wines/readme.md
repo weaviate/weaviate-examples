@@ -1,6 +1,6 @@
 # Semantic search of wines with Weaviate
 
-This folder contains code used for the [Weaviate semantic search in 5 minutes tutorial](). (Link will be added later)
+This folder contains code used for the [Hackernoon article: "Semantic Search Queries Return More Informed Results"](https://hackernoon.com/semantic-search-queries-return-more-informed-results-nr5335nw).
 
 This folder contains Wine review data, retrieved from [Kaggle (from WineEnthusiast)](https://www.kaggle.com/zynicide/wine-reviews).
 The transformer model [`sentence-transformers/msmarco-distilroberta-base-v2`](https://huggingface.co/sentence-transformers/msmarco-distilroberta-base-v2) is connected to Weaviate as [vectorization module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) (see `docker-compose.yaml` file).

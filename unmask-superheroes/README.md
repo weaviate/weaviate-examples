@@ -2,6 +2,8 @@
 
 A simple example in Python (you can also use other [client libs](https://www.semi.technology/developers/weaviate/current/client-libraries/)) showing how Weaviate can help you unmask superheroes thanks to its vector search capabilities 🦸
 
+Make sure you have an empty Weaviate running. You can do so by running `docker-compose up` in the folder where you saved the `docker-compose.yml` file.
+
 1. Connect to a Weaviate
 
 ```python
@@ -39,10 +41,10 @@ batman = {
 superman = {
     "name": "Superman"
 }
-batch = weaviate.ObjectsBatchRequest()
-batch.add(batman, "Superhero")
-batch.add(superman, "Superhero")
-client.batch.create(batch)
+
+client.batch.add_data_object(batman, "Superhero")
+client.batch.add_data_object(superman, "Superhero")
+client.batch.create_objects()
 ```
 
 Step 4. Try to find superheroes in the vectorspace
@@ -77,8 +79,7 @@ def showVectorForAlterego(alterEgo):
     }).do()
 
     getVector = client.data_object.get_by_id(
-        whoIsIt['data']['Get']['Superhero'][0]['_additional']['id'],
-        additional_properties=["vector"]
+        whoIsIt['data']['Get']['Superhero'][0]['_additional']['id'], with_vector=True
     )
 
     print(

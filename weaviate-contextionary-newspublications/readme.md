@@ -1,4 +1,4 @@
-# Example docker-compose configuration file
+# Example docker-compose configuration file with text2vec-contextionary and demo dataset
 
 Here you find an example docker-compose configuration file to start up Weaviate with the [`text2vec-contextionary module`](https://www.semi.technology/developers/weaviate/current/modules/text2vec-contextionary.html) and a News Publications example dataset. 
 

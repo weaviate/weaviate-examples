@@ -13,7 +13,8 @@ Weaviate for cool machine-learning related tasks.
 
 |Title|Language|Description|
 |---|---|---|
-| [Demo dataset News Publications](weaviate-contextionary-newspublications) | n/a | Docker-compose configuration file of Weaviate with a News Publications demo dataset. |
+| [Demo dataset News Publications with Contextionary](weaviate-contextionary-newspublications) | n/a | Docker-compose configuration file of Weaviate with a News Publications demo dataset. |
+| [Demo dataset News Publications with Transformers, NER, Spellcheck and Q&A](weaviate-transformers-newspublications) | n/a | Docker-compose configuration file of Weaviate with a News Publications demo dataset. The vectorization is done by a text2vec-transformers module, and the spellcheck, Q&A and Named Entity Recognition module are connected. |
 | [Weaviate simple schema](schema-wines) | Python | Easy example of a schema and how to upload it to Weaviate with the Python client |
 | [Semantic search through wine dataset](semanticsearch-transformers-wines) | Python | Easy example to get started with Weaviate and semantic search with the Transformers module |
 | [Unmask Superheroes in 5 steps using the Weaviate NLP module and the Python client](unmask-superheroes) | Python | Super simple 5 step guide to get started with the Weaviate NLP modules. This is a basic introduction to semantic search with Weaviate and the Python client.|

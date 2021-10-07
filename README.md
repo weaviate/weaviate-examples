@@ -7,7 +7,7 @@ Weaviate for cool machine-learning related tasks.
 
 * Most examples assume you have a Weaviate running. You can run one locally by following [this installation guide](https://www.semi.technology/developers/weaviate/current/getting-started/installation.html#customize-your-weaviate-setup) in the documentation.
   * If you need a specific vectorizer module or another ML module, it will be explained in the tutorial.
-* Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – [Github](https://www.semi.technology/developers/weaviate/current/)
+* Basic links: [Documentation](https://github.com/semi-technologies/weaviate) – [Github](https://www.semi.technology/developers/weaviate/current/) - [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw)
 
 ## Examples
 

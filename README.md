@@ -13,6 +13,8 @@ Weaviate for cool machine-learning related tasks.
 
 |Title|Language|Description|
 |---|---|---|
+| [Semantic search through Wikipedia with the Weaviate vector search engine](https://github.com/semi-technologies/semantic-search-through-Wikipedia-with-Weaviate) | Semantic search through a vectorized Wikipedia (SentenceBERT) with the Weaviate vector search engine | 
+| [PyTorch-BigGraph Wikidata search with the Weaviate vector search engine](https://github.com/semi-technologies/biggraph-wikidata-search-with-weaviate) | Search through Facebook Research's PyTorch BigGraph Wikidata-dataset with the Weaviate vector search engine |
 | [Google Colab notebook: Getting started with the Python Client](getting-started-with-python-client-colab) | python (Google Colab) | Google Colab notebook to learn to get started with the Python client. Contains plenty of example code. |
 | [Demo dataset News Publications with Contextionary](weaviate-contextionary-newspublications) | yaml | Docker-compose configuration file of Weaviate with a News Publications demo dataset. |
 | [Demo dataset News Publications with Transformers, NER, Spellcheck and Q&A](weaviate-transformers-newspublications) | yaml | Docker-compose configuration file of Weaviate with a News Publications demo dataset. The vectorization is done by a text2vec-transformers module, and the spellcheck, Q&A and Named Entity Recognition module are connected. |

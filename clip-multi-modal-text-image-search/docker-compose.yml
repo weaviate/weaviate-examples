@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  weaviate:
+    image: docker.io/semitechnologies/weaviate:1.9.0
+    restart: on-failure:0
+    ports:
+     - "8080:8080"
+    environment:
+      LOG_LEVEL: "debug"
+      QUERY_DEFAULTS_LIMIT: 20
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: "./data"
+      DEFAULT_VECTORIZER_MODULE: multi2vec-clip
+      CLIP_INFERENCE_API: "http://multi2vec-clip:8080"
+      ENABLE_MODULES: "multi2vec-clip"
+
+  multi2vec-clip:
+    image: semitechnologies/multi2vec-clip:sentence-transformers-clip-ViT-B-32-multilingual-v1-783f3f9

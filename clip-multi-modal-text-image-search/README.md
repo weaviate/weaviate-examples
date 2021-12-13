@@ -30,6 +30,10 @@ Simply add your images to the `./images` folder prior to running the import
 script. The script looks for `.jpg` file ending, but Weaviate supports other
 image types as well, you can adopt those if you like.
 
+## Model Credits
+
+This demo uses the [ckip-ViT-B32-multilingual-v1](https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1) model from [SBERT.net](https://sbert.net). Shoutout to Nils Reimers and his colleagues for the great Sentence Transformers models. 
+
 ## Image credits
 
 The images used in this demo are licensed as follows:

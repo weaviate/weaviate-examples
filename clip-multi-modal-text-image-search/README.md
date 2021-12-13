@@ -27,7 +27,7 @@ images yourself!
 ## How to run with your own images
 
 Simply add your images to the `./images` folder prior to running the import
-script. The script looks for `.jpg` file ending, but WWeaviate supports other
+script. The script looks for `.jpg` file ending, but Weaviate supports other
 image types as well, you can adopt those if you like.
 
 ## Image credits

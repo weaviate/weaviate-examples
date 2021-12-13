@@ -3,10 +3,10 @@
 ![Weaviate Multi-Modal Search](./weaviate-multi-modal-clip-search-demo.png)
 
 This example application spins up a Weaviate instance using the
-[multi2vec-clip]() module, imports a few sample images (you can add your own
-images, too!) and provides a very simple search frontend in
-[React](https://reactjs.org/) using the
-[weaviate-multi-modal-clip-search-demo.png
+[multi2vec-clip](https://www.semi.technology/developers/weaviate/current/modules/multi2vec-clip.html)
+module, imports a few sample images (you can add your own images, too!) and
+provides a very simple search frontend in [React](https://reactjs.org/) using
+the [Weaviate JS Client
 ](https://www.semi.technology/developers/weaviate/current/client-libraries/javascript.html)
 
 It is a minimal example using only 5 images, but you can add any amount of

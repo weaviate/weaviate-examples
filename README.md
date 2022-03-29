@@ -23,4 +23,4 @@ Weaviate for cool machine-learning related tasks.
 | [Semantic search through wine dataset](semanticsearch-transformers-wines) | Python | Easy example to get started with Weaviate and semantic search with the Transformers module |
 | [Unmask Superheroes in 5 steps using the Weaviate NLP module and the Python client](unmask-superheroes) | Python | Super simple 5 step guide to get started with the Weaviate NLP modules. This is a basic introduction to semantic search with Weaviate and the Python client.|
 | [Information Retrieval with BERT (Weaviate without vectorizer module)](bert-information-retrieval) | Python (Jupyter Notebook) | In this example we are going to use Weaviate without vectorization module, and use it as pure vector database to use a BERT transformer to vectorize text documents, then retrieve the closest ones through Weaviate's Search | 
-
+| [Text search with weaviate using own vectors](text-search-with-own-vectors) | Python | A basic and simple example using our own vectors(obtained using SBERT, but any other model can also be used) in weaviate|

@@ -10,7 +10,7 @@ To run this on your machine:
    d. flask
    e. urllib
 4. To add data to weaviate, run the veg_add.py file after downloading the dataset mentioned below. This will   
-   add images to weaviate from folders mentioned in that file. You can add your own images too or use the dataset of your choice by just making a few small changes in    the veg_add.py file. I have used a kaggle dataset (https://www.kaggle.com/datasets/misrakahmed/vegetable-image-dataset) to make this example. I have also deleted      all the folders from the actual train folder of the dataset to make this example easier to download. Please make sure to download the dataset, add required folders    from the train folder of that dataset to the train folder of this example.
+   add images to weaviate from folders mentioned in that file. You can add your own images too or use the dataset of your choice by just making a few small changes in    the veg_add.py file. I have used a kaggle dataset (https://www.kaggle.com/datasets/misrakahmed/vegetable-image-dataset) to make this example. I have also deleted      all the folders from the actual train folder of the dataset to make this example easier to download. Please make sure to download the dataset, add required folders    from the train folder of that dataset to the train folder of this example (create a train folder and add the required image classes).
 
 **NOTE: Please make sure to change the image paths and uploads folder paths in veg_add.py file and upload.py file so as to avoid file not found errors.**
 

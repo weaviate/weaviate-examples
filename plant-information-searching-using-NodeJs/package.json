@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "init": "^0.1.2",
+    "weaviate-client": "^2.3.0"
+  }
+}

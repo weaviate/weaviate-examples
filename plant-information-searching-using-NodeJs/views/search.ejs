@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="CSS/style.css" />
+<html>
+  <center>
+    <div class="logo">
+      <img alt="Weaviate" src="https://www.smtware.com/wp-content/uploads/2020/01/color@3x-300x280.png">
+    </div>
+    <form action="/search" spellcheck="false" method="post"> 
+    <div class="bar">
+      <input class="searchbar" name="searched_data" type="text" title="Search">
+      
+    </div>
+    <div class="buttons">
+      <button class="button" type="submit">Search</button>
+     </div>
+     </form>
+     <% if(plant_info.length!=null){%>
+      <h2 style="font-size: 5em">TOP RESULTS!</h2>
+      <% } %> 
+     <div class="container grid grid--3-cols margin-bottom-md">
+      <% for (let i = 0; i < 3 && i<plant_info.length; i++) { %> 
+    <div class="meal">
+      
+      <img src=<%=plant_info[i]['imageLinks']%> id="img" />
+      <div class="meal-content">
+        <form
+          action=  <%="/"+plant_info[i].title.trim()%>
+          method="get"
+          class="col s12"
+          enctype="multipart/form-data"
+        >
+          <button class="btn btn--form" onclick=""><%=plant_info[i].title%></button>
+          
+        </form>
+        
+      </div>
+    </div>
+    <% } %> 
+  </div>
+    </body>
+</center>
+</html>

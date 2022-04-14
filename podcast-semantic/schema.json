@@ -1,0 +1,18 @@
+{
+    "classes": [
+        {
+            "class": "Podcast",
+            "properties": [
+                {
+                    "name": "title",
+                    "dataType": ["text"]
+                },
+                {
+                    "name": "transcript",
+                    "dataType": ["text"]
+                }
+            ]
+        }
+    ]
+}
+

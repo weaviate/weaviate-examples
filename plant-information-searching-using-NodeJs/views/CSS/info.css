@@ -1,0 +1,87 @@
+
+ @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 10rem;
+    background: #1D976C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+
+  }
+
+#plant-main{
+      margin: auto;
+      margin-top: 48px;
+      width: 75vw;
+      border-radius: 11px;
+      box-shadow: 0rem 2rem 4rem rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+  }
+
+  #plant-main__image img{
+      object-fit: cover;
+      width: 32vw;
+      height: 100%;
+      border-radius: 0 11px 11px 0;
+  }
+
+  #plant-main__info{
+      padding: 24px 48px;
+  }
+
+  #main-info__heading{
+      font-size: 50px;
+      color: #507642;
+      margin-bottom: 32px;
+      font-weight: bold;
+  }
+
+  #alternate-name__heading,#sowing-instructions__heading,#harvesting-instructions__heading,#compatible-instructions__heading
+  ,#avoiding-instructions__heading,#culinary-instructions__heading{
+        margin: 24px 0px 12px;
+        font-size: 24px;
+        color: #a37b45;
+  }
+
+  @media (max-width: 800px) {
+    #plant-main{
+        flex-direction: column-reverse;
+    }
+
+    #plant-main__image img{
+        object-fit: cover;
+        width: 75vw;
+        border-radius: 11px 11px 0 0;
+    }
+
+    #main-info__heading{
+        margin-bottom: 24px;
+        margin-top: 16px;
+        font-size: 40px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    #main-info__heading{
+        margin-bottom: 24px;
+        margin-top: 16px;
+        font-size: 40px;
+    }
+    #plant-main__info{
+        padding: 24px 32px;
+        /* background-color: #AAA; */
+    }
+  }
+

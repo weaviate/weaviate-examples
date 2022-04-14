@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/info.css" />
+</head>
+<body>
+
+    <div id="plant-main">
+        <div id="plant-main__info">
+            <h1 id="main-info__heading"><%=plant_info.Name  %> </h1>
+            
+            <h1 id="alternate-name__heading">Alternate-name</h1>
+            <p id="alternate-name"><% if(plant_info.alternateName==""){  %></p>
+                <%="N/A"%> 
+                <% }else{ %> 
+                    <%=plant_info.alternateName%>
+                    <% } %>  
+                </p>
+            <h1 id="sowing-instructions__heading">Sowing instructions</h1>
+            <p id="sowing-instrucitons"><%=plant_info.sowInstructions  %>
+            </p>
+            <h1 id="sowing-instructions__heading">Space Instructions</h1>
+            <p id="sowing-instrucitons"><%=plant_info.spaceInstructions  %>
+            </p>
+            <h1 id="harvesting-instructions__heading">Harvesting instructions</h1>
+            <p id="harvesting-instrucitons"><%=plant_info.harvestInstructions  %>
+                
+            </p>
+            <h1 id="compatible-instructions__heading">Compatible instructions</h1>
+            <p id="compatible-instrucitons"><%=plant_info.compatiblePlants.substring(35) %>
+            </p>
+            <h1 id="avoiding-instructions__heading">Avoiding instructions</h1>
+            <p id="avoiding-instructions"><%if(plant_info.avoidInstructions ==null) {  %>
+                <%= "Not much to avoid! Just Follow normal gardening etiquettes"%>
+                <%}else{%>
+                    <%=  plant_info.avoidInstructions%> 
+                    <% } %> 
+            </p>
+            <h1 id="culinary-instructions__heading">Culinary instructions</h1>
+            <p id="cuulinary-instructions"><%=plant_info.culinaryHints  %>
+            </p>
+        </div>
+        <div id="plant-main__image">
+            <img src=  <%=plant_info['image-links']%>>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+</script>
+</html>

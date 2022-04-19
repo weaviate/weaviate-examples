@@ -26,6 +26,3 @@ Weaviate for cool machine-learning related tasks.
 | [Text search with weaviate using own vectors](text-search-with-own-vectors) | Python | A basic and simple example using our own vectors(obtained using SBERT, but any other model can also be used) in weaviate|
 | [Harry Potter Question Answering with Haystack & Weaviate](harrypotter-qa-haystack-weaviate) | Python (Jupyter/Colab notebook) | A demo notebook showing how to use Weaviate as DocumentStore in [Haystack](https://haystack.deepset.ai/overview/intro).
 | [Vegetable classification using image2vec-neural](vegetable-classification) | Python  |An image classification example made using image2vec-neural and flask to classify vegetable images|
-| [Toxic Comment Classifier having GUI in Tkinter](weaviate-toxic-comment-classifier) | Python  |An example to classify comments as Toxic or Non Toxic |
-| [Plant information searching in NodeJs and Javascript](plant-information-searching-using-NodeJs) | NodeJs, Javascript |A simple example to demonstrate how to use weaviate in NodeJs using Javascript APIs|
-| [Web App for movie recommendation](weaviate-movie-recommendation-example) | NodeJs, Javascript |An example demonstration how to easily make a movie recommender using weaviate|

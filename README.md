@@ -26,3 +26,4 @@ Weaviate for cool machine-learning related tasks.
 | [Text search with weaviate using own vectors](text-search-with-own-vectors) | Python | A basic and simple example using our own vectors(obtained using SBERT, but any other model can also be used) in weaviate|
 | [Harry Potter Question Answering with Haystack & Weaviate](harrypotter-qa-haystack-weaviate) | Python (Jupyter/Colab notebook) | A demo notebook showing how to use Weaviate as DocumentStore in [Haystack](https://haystack.deepset.ai/overview/intro).
 | [Vegetable classification using image2vec-neural](vegetable-classification) | Python  |An image classification example made using image2vec-neural and flask to classify vegetable images|
+| [Exploring multi2vec-clip with Python and flask](exploring-multi2vec-clip-with-Python-and-flask) | Python  |This example explores the multi2vec-clip module to implement an image and text combined search functionality.|

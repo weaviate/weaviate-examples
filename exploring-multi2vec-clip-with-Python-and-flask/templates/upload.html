@@ -1,0 +1,67 @@
+<!doctype html>
+<title>Python Flask Image search using image and text query</title>
+<div>
+<h2>Select an image file to upload</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+{% if filename %}
+	<div>
+        <figure>
+		    <img src="{{ url_for('display_image', filename=filename) }}">
+		</figure>
+		<br>
+		<figure>
+            <figcaption><b>The below 3 images are most similar to the uploaded image.</b></figcaption>
+			<img src="{{ url_for('static', filename='Images/'+imagePath[0]) }}">
+			<img src="{{ url_for('static', filename='Images/'+imagePath[1]) }}">
+			<img src="{{ url_for('static', filename='Images/'+imagePath[2]) }}">
+        </figure>
+	</div>
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Search similar Images">
+	</p>
+</form>
+</div>
+
+<div>
+	<h2>Enter a text description to find similar image</h2>
+	
+	<div>
+		<h4>Below are top 3 results that match the description - <h3 style="color: red;">{{description}}</p></h3>
+        {% if images %}
+		<h1>Images</h1>
+		<figure>
+			{% for i in images %}
+			    <img src="{{ url_for('static', filename='Images/'+i) }}">
+			{% endfor %}
+		</figure>
+        {% endif %}
+		{% if texts %}
+		<h1>Texts</h1>
+		    {% for j in texts %}
+			    <h4>{{j}}</h4>
+			{% endfor %}
+		{% endif %}
+	</div>
+	
+	<form method="post" action="/text_description" >
+		<input type="text" name="description">
+        <input type="submit" value="Search image similar to this text">
+	</form>
+</div>

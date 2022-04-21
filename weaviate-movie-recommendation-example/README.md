@@ -1,4 +1,6 @@
 # weaviate-movie-recommendation
+
+The Dataset used for this example can be found here: https://www.kaggle.com/datasets/lucifierx/movie-recommendation
  
 1. run command 'npm install' to install all the required node modules in the directory
 2. make sure the docker file is running

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="CSS/style.css" />
+<script type="text/javascript" src="/columns.js"></script>
+<html>
+  <center>
+    <div class="logo">
+      <img alt="Weaviate" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfRRWtR29fLaunOEYhvXC_biDByszaek29g&usqp=CAU">
+    </div>
+    <form action="/search" spellcheck="false" method="post"> 
+      <div class="search-section">
+    <div class="bar">
+      <input class="searchbar" name="searched_data" type="text" title="Search" autocomplete="off">
+      
+    </div>
+    <div class="buttons">
+      <button class="button btn2" type="submit">Search</button>
+     </div>
+     </div>
+     </form>
+     <% if(movie_info.length!=null){%>
+      <h2 style="font-size: 5em; margin-bottom:4vh;">TOP RESULTS!</h2>
+      <% } %> 
+     <div class="container grid grid--3-cols margin-bottom-md">
+      <% for (let i = 0;i<movie_info.length; i++) { %> 
+    <div class="meal">
+      
+      <div class="meal-content" style="background-color:rgb(212, 184, 190) ; font-size: 2rem;height: 300px;">
+        <br>Movie Title:<%=movie_info[i].title  %> <br>
+        <br>Movie genres:<%=movie_info[i]['genres']  %> <br>
+        <br>Movie Popularity:<%=movie_info[i]['popularity']  %> <br>
+        <br>Movie Runtime:<%=movie_info[i]['runtime']  %> Minutes <br>
+      </div>
+    </div>
+    <% } %> 
+  </div>
+    </body>
+</center>
+</html>
+

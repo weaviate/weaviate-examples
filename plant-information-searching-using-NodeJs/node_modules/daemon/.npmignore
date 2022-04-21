@@ -1,9 +1,0 @@
-.lock-wscript
-build/
-build/*
-*.swp
-*.node
-node_modules
-npm-debug.log
-fixtures/*
-fixtures/!.gitkeep

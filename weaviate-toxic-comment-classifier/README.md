@@ -1,4 +1,6 @@
 # weaviate-toxic-comment-classifier
+
+The dataset used for this example is available here: https://www.kaggle.com/datasets/akashsuper2000/toxic-comment-classification
  
 1. Run the command 'pip install -r requirements.txt' in directory to install all required dependencies 
 2. Make sure the docker file is running 

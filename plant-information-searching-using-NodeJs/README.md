@@ -1,5 +1,7 @@
 # weaviate-example-js
  
+The Dataset used for this example can be found here: https://data.world/sharon/vegetables-herbs-and-edible-flowers 
+
 1.Run command 'npm install' to install all the required node modules.\
 2.Make Sure docker file is running. \
 3.Run the add_data.js with command 'node add_data.js' to add data \

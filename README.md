@@ -30,3 +30,4 @@ Weaviate for cool machine-learning related tasks.
 | [Toxic Comment Classifier having GUI in Tkinter](weaviate-toxic-comment-classifier) | Python  |An example to classify comments as Toxic or Non Toxic |
 | [Plant information searching in NodeJs and Javascript](plant-information-searching-using-NodeJs) | NodeJs, Javascript |A simple example to demonstrate how to use weaviate in NodeJs using Javascript APIs|
 | [Web App for movie recommendation](weaviate-movie-recommendation-example) | NodeJs, Javascript |An example demonstration how to easily make a movie recommender using weaviate|
+| [Generate Data profile for data stored in weaviate cluster](weaviate-data-profiling-using-pandas) | Python, NodeJs, Javascript |An example demonstration how to easily generate data profile for data in weaviate cluster using pandas library of python|

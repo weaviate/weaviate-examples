@@ -31,3 +31,4 @@ Weaviate for cool machine-learning related tasks.
 | [Plant information searching in NodeJs and Javascript](plant-information-searching-using-NodeJs) | NodeJs, Javascript |A simple example to demonstrate how to use weaviate in NodeJs using Javascript APIs|
 | [Web App for movie recommendation](weaviate-movie-recommendation-example) | NodeJs, Javascript |An example demonstration how to easily make a movie recommender using weaviate|
 | [Generate Data profile for data stored in weaviate cluster](weaviate-data-profiling-using-pandas) | Python, NodeJs, Javascript |An example demonstration how to easily generate data profile for data in weaviate cluster using pandas library of python|
+| [Example with NER module of weaviate](example-with-NER-module) | Python  |Minimal example to get started with and use [NER](https://weaviate.io/developers/weaviate/v1.11.0/reader-generator-modules/ner-transformers.html) module to extract useful data and store it|

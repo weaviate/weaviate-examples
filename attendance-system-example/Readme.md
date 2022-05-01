@@ -31,5 +31,5 @@ store in weaviate.<br>
 7. Run the upload_student.py file to start the flask server and use the interface.<br>
 8. Upload photo of entire class and click on submit. You will be shown with the names which are present.<br>
 
-Below is the video of the demo of this system.
+Below is the video of the demo of this system.<br>
 https://user-images.githubusercontent.com/84656834/166136342-16cfa1cc-5dc5-4e1b-8ade-9e3a26d2fc59.mp4

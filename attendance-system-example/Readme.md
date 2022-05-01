@@ -30,4 +30,12 @@ store in weaviate.<br>
 6. Then, click a picture of your class and save it.<br>
 7. Run the upload_student.py file to start the flask server and use the interface.<br>
 8. Upload photo of entire class and click on submit. You will be shown with the names which are present.<br>
-Below is the video of the demo of this system.
+
+Below are some screenshots of the demo:<br>
+
+Three of them are present here.<br>
+![Messi, Ronaldo and Mbappe](att1.png)
+
+<br><br>
+Two of them are present here.<br>
+![Messi and Ronaldo](att2.png)

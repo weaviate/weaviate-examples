@@ -1,0 +1,5 @@
+Flask==2.0.2
+opencv_python==4.5.5.64
+pandas==1.1.5
+weaviate_client==3.3.3
+Werkzeug==2.0.1

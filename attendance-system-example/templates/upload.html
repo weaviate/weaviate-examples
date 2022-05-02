@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <title>Python Flask File Upload Example</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: beige;">
+
+<div style="background-color: aquamarine; margin-bottom: 50px;" class="col-lg-9 col-lg-offset-1"> 
+<h2 style="align-items: center; background-color: aquamarine; color: brown;">Upload a photo of all students in a class (a single image)</h2>
+</div>
+<br><br>
+<div class="row">
+<div class="col-lg-5 col-lg-offset-1">
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		
+		{% for message in messages %}
+		  <h4>{{ message }}</h4>
+		{% endfor %}
+		
+	  {% endif %}
+	{% endwith %}
+
+
+{% if filename %}
+	<div>
+        <figure>
+		    <img src="{{ url_for('display_image', filename=filename) }}" width="300" height="300"><br>
+            
+        </figure>
+		
+	</div>
+{% endif %}
+
+</div>
+
+<div class="col-lg-4" style="background-color: ivory; border: 5px; border-color: red; border-style: solid;">
+	<h4>Attendance marked</h4><br>
+	{{htl|safe}}
+</div>
+
+</div>
+<div class="col-lg-5 col-lg-offset-1">
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+</div>
+</body>

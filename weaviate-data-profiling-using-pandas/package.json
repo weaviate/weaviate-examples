@@ -1,0 +1,19 @@
+{
+  "name": "weaviate-data-profiling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "python-shell": "^3.0.1",
+    "weaviate-client": "^2.3.0"
+  }
+}

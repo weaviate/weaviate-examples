@@ -30,3 +30,4 @@ Weaviate for cool machine-learning related tasks.
 | [Toxic Comment Classifier having GUI in Tkinter](weaviate-toxic-comment-classifier) | Python  |An example to classify comments as Toxic or Non Toxic |
 | [Plant information searching in NodeJs and Javascript](plant-information-searching-using-NodeJs) | NodeJs, Javascript |A simple example to demonstrate how to use weaviate in NodeJs using Javascript APIs|
 | [Web App for movie recommendation](weaviate-movie-recommendation-example) | NodeJs, Javascript |An example demonstration how to easily make a movie recommender using weaviate|
+| [Chat-bot using QA module](Chat-bot-with-QA-module) | Python, flask |A chatbot made using QA-module of weaviate and flask.|

@@ -41,12 +41,15 @@ def upload_image():
 		faces = getFaces("static/uploads/{}".format(filename))
 
         # Using the markAttendance function to mark attendance of recognized faces.
-		attendance = markAttendance(faces,own=True).drop_duplicates()
+		attendance,error = markAttendance(faces,own=True)
+		attendance = attendance.drop_duplicates()
+		# error = error.drop_duplicates()
 
 		htl = attendance.to_html() # convert to html so as to render in the 
-		print(attendance.to_html())
-
-		return render_template('upload.html', filename=filename,htl=htl)
+		err = error.to_html()
+		# print(attendance.to_html())
+        
+		return render_template('upload.html', filename=filename,htl=htl,err=err)
 
 	else:
 		flash('Allowed image types are -> png, jpg, jpeg, gif')

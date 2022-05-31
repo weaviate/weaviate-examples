@@ -3,6 +3,8 @@ import datetime
 import base64, json, os
 import cv2, sys
 from own_vec import getFaceEncoding
+from custom_exception import UnknownImageError
+import numpy as np
 
 def testImage(nearImage):
     '''
@@ -14,7 +16,7 @@ def testImage(nearImage):
     print("Client created (student_test.py file)")
 
     res = client.query.get("Students", ["image","labelName"]).with_near_image(nearImage).do()
-    print(res['data']['Get']['Students'][0].keys())
+    # print(res['data']['Get']['Students'][0].keys())
 
     # returning the labelName of the most similar image
     return (res['data']['Get']['Students'][0]['labelName'])
@@ -75,18 +77,40 @@ def clean():
         os.remove(i)
     print("Faces folder cleaned")
 
-def testit(path):
+def test_own_vector(path):
+    print("--------------test own vector function called-----------------")
 
     client = weaviate.Client("http://localhost:8080")
     print("Client created (student_test.py file)")
 
     test = getFaceEncoding(path)
+    if np.array_equal(np.array(test),np.zeros(128)):
+        return "Not a face"
     nearVector = {"vector": test}
+    # print(nearVector)
     res = client.query.get("Students", ["labelName", "_additional {certainty}"]).with_near_vector(nearVector).do()
-    #print(res)
-    ans = res['data']['Get']['Students'][0]['labelName']
-    print(ans)
-    return ans
+    # print(res)
+    certainty = res['data']['Get']['Students'][0]['_additional']['certainty']
+    # print("Certainty:",certainty)
+
+    # Setting some threshold on the certainty because cosine distance will always be computed
+    # and if no images match, the one with highest similarity will be returned. But we want
+    # the similarity to be very high so as to match face perfectly.
+
+    if certainty is not None and certainty<0.96:
+        # print("Certainty is very less")
+        return "No match found"
+
+    print(res)
+    if certainty is not None:
+        try:
+            ans = res['data']['Get']['Students'][0]['labelName']
+        except:
+            raise UnknownImageError("The test may not contain any of the person images that are there in weaviate")
+        print("This is answer:",ans)
+        print("-----------------test own vector function ENDS-----------------")
+        return ans
+    return "No match found"
 
 # for f in getFaces("C:/Users/aakash/Downloads/a333.jpeg"):
 #     print(f)

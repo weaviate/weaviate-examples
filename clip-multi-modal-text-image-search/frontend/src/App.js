@@ -22,7 +22,7 @@ function App() {
         .get()
         .withClassName('MultiModal')
         .withNearText({concepts: [searchTerm]})
-        .withFields('filename image')
+        .withFields('filename image _additional{ certainty }')
         .withLimit(1)
         .do();
       setResults(res);
@@ -36,51 +36,57 @@ function App() {
     event.preventDefault();
   };
 
+  const getResult = results => {
+    const certainty = results['data']['Get']['MultiModal'][0]['_additional']['certainty']
+    return <div>
+        <img
+          style={{ maxHeight: '400px' }}
+          alt="Certainty: "
+          src={
+            'data:image/jpg;base64,' +
+            results['data']['Get']['MultiModal'][0]['image']
+          }
+        />
+        <div >Certainty: {certainty*100} %</div>
+      </div>
+  }
+
   return (
-    <div className="container" style={{textAlign: 'center'}}>
+    <div className="container" style={{textAlign: 'center', maxWidth: '600px'}}>
       <img
         alt="Weaviate Logo"
         src={logo}
         width="33%"
-        style={{margin: '25px'}}
+        style={{margin: '25px', maxHeight: '100px'}}
       />
       <h1 className="title">
-        Weaviate <code>v1.9.0</code> CLIP Demo
+        Weaviate <code>v1.13.2</code> CLIP Demo
       </h1>
       <h2 className="subtitle">Multi-Modal Image/Text search</h2>
       <form
         onSubmit={onSubmit}
         style={{marginTop: '50px', marginBottom: '50px'}}
       >
-        <div class="field has-addons">
-          <div class="control is-expanded">
+        <div className="field has-addons">
+          <div className="control is-expanded">
             <input
-              class="input is-large"
+              className="input is-large"
               type="text"
               placeholder="Search for images"
               onChange={onChange}
             />
           </div>
-          <div class="control">
+          <div className="control">
             <input
               type="submit"
-              class="button is-info is-large"
+              className="button is-info is-large"
               value="Search"
               style={{backgroundColor: '#fa0171'}}
             />
           </div>
         </div>
       </form>
-      {results.data && (
-        <img
-          width="100%"
-          alt="Multi-Modal Search Result"
-          src={
-            'data:image/jpg;base64,' +
-            results['data']['Get']['MultiModal'][0]['image']
-          }
-        />
-      )}
+      {results.data && getResult(results)}
     </div>
   );
 }

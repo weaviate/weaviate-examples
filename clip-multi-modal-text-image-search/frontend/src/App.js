@@ -60,7 +60,7 @@ function App() {
         style={{margin: '25px', maxHeight: '100px'}}
       />
       <h1 className="title">
-        Weaviate <code>v1.13.2</code> CLIP Demo
+        Weaviate <code>v1.14.1</code> CLIP Demo
       </h1>
       <h2 className="subtitle">Multi-Modal Image/Text search</h2>
       <form

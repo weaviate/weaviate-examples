@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   weaviate:
-    image: docker.io/semitechnologies/weaviate:1.13.2
+    image: docker.io/semitechnologies/weaviate:1.14.1
     restart: on-failure:0
     ports:
      - "8080:8080"

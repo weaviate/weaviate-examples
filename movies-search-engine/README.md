@@ -17,7 +17,7 @@ Follow the following steps to reproduce the example \
 1.Download the dataset from https://www.kaggle.com/datasets/yashgupta24/48000-movies-dataset and paste it in the directory of example \
 2.Make sure the weaviate docker file is running. \
 3.Run the command 'pip install -r requirements.txt' in directory to install all required dependencies \
-4.Now run add_data.py (change path of dataset at line 113 if necessary) to add all the. You can also decrease the number of data objects at line 116 so that it takes less time. \
+4.Now run add_data.py (change path of dataset at line 113 if necessary) to add all the data objects. You can also decrease the number of data objects at line 116 so that it takes less time. \
 5.After adding data run command 'npm install' to install all required node modules.\
 6.After adding data and installing modules run command 'node index.js' and navigate to http://localhost:3000/ to perform searching
 

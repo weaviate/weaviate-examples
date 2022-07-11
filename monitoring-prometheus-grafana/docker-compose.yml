@@ -8,7 +8,7 @@ services:
     - '8080'
     - --scheme
     - http
-    image: semitechnologies/weaviate:1.13.2-df23de6@sha256:de4ee867be80502ea229fb3bbbc83038d5a0a65a1259d9205ea14f2b1732e39f # TODO: update to v1.14 when released
+    image: semitechnologies/weaviate:1.14.1
     ports:
     - 8080:8080
     restart: on-failure:0
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./data/weaviate:/var/lib/weaviate
   prometheus:
-    image: prom/prometheus:v2.1.0
+    image: prom/prometheus:v2.36.2
     volumes:
       - ./prometheus:/etc/prometheus/
       - ./data/prometheus:/prometheus

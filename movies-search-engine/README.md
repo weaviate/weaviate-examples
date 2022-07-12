@@ -13,16 +13,30 @@ The functionalities of weaviate that it covers are:-
 
 This example uses HTML,CSS,Js for frontend and NodeJs for the backend. 
 
-Follow the following steps to reproduce the example \
-1.Download the dataset from https://www.kaggle.com/datasets/yashgupta24/48000-movies-dataset and paste it in the directory where add_data.py file exists \
-2.Run the command 'sudo docker-compose up -d' to run the weaviate docker file \
-3.Run the command 'pip install -r requirements.txt' in directory to install all required dependencies \
-4.Now run the command 'python add_data.py' (change path of dataset at line 113 if necessary) to add all the data objects. You can also decrease the number of data objects at line 116 so that it takes less time. \
-5.After adding data run command 'npm install' to install all required node modules.\
-6.After adding data and installing modules run command 'node index.js' and navigate to http://localhost:3000/ to perform searching
+Follow the following steps to reproduce the example 
+1. Download the dataset from https://www.kaggle.com/datasets/yashgupta24/48000-movies-dataset and paste it in the directory where add_data.py file exists 
+2. Run the following command to run the weaviate docker file 
+```bash
+sudo docker-compose up -d
+``` 
 
+3. Run the following command in directory to install all required dependencies 
+```bash
+pip install -r requirements.txt
+``` 
+4. Run the following command to add all the data objects,you can change path of dataset at line 115 if necessary. You can also decrease the number of data objects at line 119 so that it takes less time.
+```bash
+python add_data.py
+``` 
+5. After adding data run the following command to install all required node modules.
+```bash
+npm install
+``` 
+6. After adding data and installing modules run the following command and navigate to http://localhost:3000/ to perform searching
+```bash
+npm run start
+``` 
 A short demo usage:-
-
 
 
 

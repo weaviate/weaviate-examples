@@ -6,8 +6,10 @@ client = weaviate.Client("http://localhost:8080")
 
 
 
-#  UNCOMMENT BELOW LINE IF THIS IS NOT THE FIRST TIME YOU ARE ADDING DATA FOR THIS SCHEMA
-# client.schema.delete_class('Movies')
+#Checking if Movies schema is present, If it is already present deleting it
+for i in range (0,len(client.schema.get()['classes'])):
+    if client.schema.get()['classes'][i]['class']=='Movies':
+        client.schema.delete_class('Movies')
 
 
 #creating the schema

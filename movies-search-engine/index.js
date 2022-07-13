@@ -80,7 +80,7 @@ app.get('/search', (req, res) => {
             valueString: "*"+text+"*"
           }]
         })
-        .withLimit(100)
+        .withLimit(10)
         .do()
         .then(info => {
           res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
@@ -100,6 +100,7 @@ app.get('/search', (req, res) => {
           concepts: [text],
           certainty: 0.6
         })
+        .withLimit(10)
         .do()
         .then(info => {
          res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
@@ -154,7 +155,7 @@ app.get('/sort', (req, res) => {
         valueString: "*"+text+"*"
       }]
     })
-    .withLimit(100)
+    .withLimit(10)
     .do()
     .then(info => {
       res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
@@ -174,7 +175,7 @@ app.get('/sort', (req, res) => {
           concepts: [text],
           certainty: 0.6
         })
-        .withLimit(100)
+        .withLimit(10)
         .do()
         .then(info => {
          res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});

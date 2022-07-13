@@ -85,6 +85,11 @@ movie_class_schema = {
             "name": "review_body",
             "dataType": ["string"],
             "description": "body of the review", 
+        },
+        {
+            "name": "duration",
+            "dataType": ["string"],
+            "description": "the duration of the review", 
         }
     ]
 }
@@ -122,6 +127,7 @@ for i in range (0,len(data)):
         'rating_value':float(item['RatingValue']) if not math.isnan(float(item['RatingValue'])) else -1,
         'review_aurthor': str(item['ReviewAurthor']) if str(item['ReviewAurthor']) != "nan" else "",
         'review_body': str(item['ReviewBody']) if str(item['ReviewBody']) != "nan" else "",
+        'duration': str(data.iloc[i]['duration']) if str(item['ReviewBody']) != "nan" else "",
     }
 
     try:

@@ -22,6 +22,16 @@ movie_class_schema = {
             "description": "The id of the movie", 
         },
         {
+            "name": "best_rating",
+            "dataType": ["number"],
+            "description": "best rating of the movie", 
+        },        
+        {
+            "name": "worst_rating",
+            "dataType": ["number"],
+            "description": "worst rating of the movie", 
+        },
+        {
             "name": "url",
             "dataType": ["string"],
             "description": "The IMBD url of the movie", 
@@ -82,6 +92,11 @@ movie_class_schema = {
             "description": "aurthor of the review", 
         },
         {
+            "name": "review_date",
+            "dataType": ["string"],
+            "description": "date of review", 
+        },
+        {
             "name": "review_body",
             "dataType": ["string"],
             "description": "body of the review", 
@@ -122,12 +137,15 @@ for i in range (0,len(data)):
         'director': str(item['Director']).lower(),
         'description':str(item['Description']),
         'date_published': str(item['DatePublished']),
-        'keywords': str(item['Keywords']) if str(item['Keywords']) != "nan" else "",
-        'rating_count': float(item['RatingCount']) if not math.isnan(float(item['RatingCount'])) else -1,
-        'rating_value':float(item['RatingValue']) if not math.isnan(float(item['RatingValue'])) else -1,
-        'review_aurthor': str(item['ReviewAurthor']) if str(item['ReviewAurthor']) != "nan" else "",
-        'review_body': str(item['ReviewBody']) if str(item['ReviewBody']) != "nan" else "",
-        'duration': str(data.iloc[i]['duration']) if str(item['ReviewBody']) != "nan" else "",
+        'keywords': str(item['Keywords']),
+        'worst_rating': float(item['WorstRating']),
+        'best_rating': float(item['BestRating']),
+        'rating_count': float(item['RatingCount']),
+        'rating_value':float(item['RatingValue']),
+        'review_aurthor': str(item['ReviewAurthor']),
+        'review_body': str(item['ReviewBody']),
+        'review_date': str(item['ReviewDate']),
+        'duration': str(item['duration'])
     }
 
     try:

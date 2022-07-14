@@ -83,7 +83,7 @@ app.get('/search', (req, res) => {
         .withLimit(10)
         .do()
         .then(info => {
-          res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
+          res.render(path.join(initial_path, "search.ejs"),{movie_info:info.data.Get.Movies});
     
         })
         .catch(err => {
@@ -103,7 +103,7 @@ app.get('/search', (req, res) => {
         .withLimit(10)
         .do()
         .then(info => {
-         res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
+         res.render(path.join(initial_path, "search.ejs"),{movie_info:info.data.Get.Movies});
         })
         .catch(err => {
           console.error(err)
@@ -158,7 +158,7 @@ app.get('/sort', (req, res) => {
     .withLimit(10)
     .do()
     .then(info => {
-      res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
+      res.render(path.join(initial_path, "search.ejs"),{movie_info:info.data.Get.Movies});
 
     })
     .catch(err => {
@@ -178,7 +178,7 @@ app.get('/sort', (req, res) => {
         .withLimit(10)
         .do()
         .then(info => {
-         res.render(path.join(initial_path, "search.ejs"),{movie_info:info['data']['Get']['Movies']});
+         res.render(path.join(initial_path, "search.ejs"),{movie_info:info.data.Get.Movies});
         })
         .catch(err => {
           console.error(err)
@@ -204,7 +204,7 @@ app.get('/movie/:id',(req,res)=>{
       })
       .do()
       .then(info => {
-        mov_id=info['data']['Get']['Movies'][0]['_additional']['id']
+        mov_id=info.data.Get.Movies[0]._additional.id
 
         //retrieving recommended movies for the current pic of the movie
             client.graphql
@@ -215,7 +215,7 @@ app.get('/movie/:id',(req,res)=>{
               .withLimit(10)
               .do()
               .then(info2 => {
-                res.render(path.join(initial_path, "movie_info.ejs"),{movie_info:info['data']['Get']['Movies'],related_movies:info2['data']['Get']['Movies']});
+                res.render(path.join(initial_path, "movie_info.ejs"),{movie_info:info.data.Get.Movies,related_movies:info2.data.Get.Movies});
               })
               .catch(err => {
                 console.error(err)
@@ -240,7 +240,7 @@ app.get('/more_details', (req, res) =>
       })
       .do()
       .then(info => {
-        mov_id=info['data']['Get']['Movies'][0]['_additional']['id']
+        mov_id=info.data.Get.Movies[0]._additional.id
 
             //retrieving recommended movies for the current pic of the movie
             client.graphql
@@ -251,7 +251,7 @@ app.get('/more_details', (req, res) =>
               .withLimit(10)
               .do()
               .then(info2 => {
-                res.render(path.join(initial_path, "more_details.ejs"),{movie_info:info['data']['Get']['Movies'],related_movies:info2['data']['Get']['Movies']});
+                res.render(path.join(initial_path, "more_details.ejs"),{movie_info:info.data.Get.Movies,related_movies:info2.data.Get.Movies});
               })
               .catch(err => {
                 console.error(err)

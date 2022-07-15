@@ -264,4 +264,6 @@ app.get('/more_details', (req, res) =>
 })
 
 
-app.listen(process.env.PORT ||3000)
+app.listen(process.env.PORT || 3000, 
+  () => console.log(`The app is running on: http://localhost:${process.env.PORT || 3000}`)
+)

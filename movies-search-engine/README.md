@@ -42,6 +42,129 @@ A short demo usage:-
 
 [movie_search_engine.webm](https://user-images.githubusercontent.com/75658681/178302422-247971ad-4c9f-4b8b-8c1c-1f7db267a2a0.webm)
 
+Some description about queries:- \
+All the used queries can be found in queries.js file. There are mainly 5 queries being used:
+1. Query to fetch filtered search results:- This query uses the where filter provided in weaviate which takes various operators like 'And', 'Or', 'Not', 'Like' etc. More information about the Where filter can be found [here](https://weaviate.io/developers/weaviate/current/graphql-references/filters.html#where-filter). For this example we used the Like operator  of the Where filter which allows us to do string searches based on the partial match. More information on the Like operator can be found [here](https://weaviate.io/developers/weaviate/current/graphql-references/filters.html#like-operator).
+```js
+client.graphql
+        .get()
+        .withClassName('Movies')
+        .withSort([{ path: ['rating_count'], order: 'desc' }])
+        .withFields(['title', 'poster_link', 'rating_value', 'duration', 'director', 'movie_id'])
+        .withWhere({
+            operator: 'Or',
+            operands: [{
+                path: ["title"],
+                operator: "Like",
+                valueString: "*" + text + "*"
+            },
+            {
+                path: ["director"],
+                operator: "Like",
+                valueString: "*" + text + "*"
+            },
+            {
+                path: ["genres"],
+                operator: "Like",
+                valueString: "*" + text + "*"
+            }
+                ,
+            {
+                path: ["keywords"],
+                operator: "Like",
+                valueString: "*" + text + "*"
+            }
+                ,
+            {
+                path: ["actors"],
+                operator: "Like",
+                valueString: "*" + text + "*"
+            }]
+        })
+        .withLimit(10)
+        .do()
+        .then(info => {
+            return info
+        })
+        .catch(err => {
+            console.error(err)
+        })
+```
 
+2. Query to fetch results by sematic searching:- This query uses the nearText filter of the Get query of weaviate. It allows us to perform semantic searching on the data objects. More info about nearText filter can be found [here](https://weaviate.io/developers/weaviate/current/tutorials/how-to-perform-a-semantic-search.html#neartext-filter)
+```js
+client.graphql
+        .get()
+        .withClassName('Movies')
+        .withFields(['title', 'poster_link', 'rating_value', 'duration', 'director', 'movie_id'])
+        .withNearText({
+            concepts: [text],
+            certainty: 0.6
+        })
+        .withLimit(10)
+        .do()
+        .then(info => {
+            return info
+        })
+        .catch(err => {
+            console.error(err)
+        });
+```
 
+3. Query to fetch sorted results:- This query allows us to change the order in which results appear for the above 2 queries by sorting them on the basis of their primitive property. For getting sorted results we need to tell the primitive property on which sorting needs to be done and the order in which the objects are needed to be sorted. For Example to apply sorting with nearText filter the query would be.
+```js
+client.graphql
+        .get()
+        .withClassName('Movies')
+        .withSort([{ path: [primitive_property], order: sorting_order }])
+        .withFields(['title', 'poster_link', 'rating_value', 'duration', 'director', 'movie_id'])
+        .withNearText({
+            concepts: [text],
+            certainty: 0.6
+        })
+        .withLimit(10)
+        .do()
+        .then(info => {
+            return info
+        })
+        .catch(err => {
+            console.error(err)
+        });
+```
 
+4. Query to fetch movie details:-This query like the filtered search query also uses the Where filter of weaviate but the operator this time is 'Equal' instead of 'Like'. This query searches for a movie having that specific id and fetches details of various fields of that movie.
+```js
+client.graphql
+        .get()
+        .withClassName('Movies')
+        .withFields(['title', 'poster_link', 'url', 'rating_value', 'duration', 'description', 'date_published', 'director', 'actors', 'best_rating', 'worst_rating', 'rating_count', 'genres', 'keywords', 'movie_id', 'review_aurthor', 'review_date', 'review_body', '_additional { id certainty }'])
+        .withWhere({
+            path: ["movie_id"],
+            operator: "Equal",
+            valueNumber: parseInt(id)
+        })
+        .do()
+        .then(info => {
+            return info;
+        })
+        .catch(err => {
+            console.error(err)
+        })
+```
+
+5. Query to fetch recommended movies:- This query fetches the data objects that are closest to the given object. It uses the nearObject filter which requires specifying the object's id or beacon in the argument. For this demo we have passed the movie id of a paricular movie to fetch similar movies. More information on nearObject filter can be found [here](https://weaviate.io/developers/weaviate/current/graphql-references/filters.html#nearobject-vector-search-argument)
+```js
+client.graphql
+        .get()
+        .withClassName('Movies')
+        .withFields('title rating_value duration poster_link movie_id')
+        .withNearObject({ id: mov_id, certainty: 0.85 })
+        .withLimit(10)
+        .do()
+        .then(info => {
+            return info;
+        })
+        .catch(err => {
+            console.error(err)
+        });
+```      

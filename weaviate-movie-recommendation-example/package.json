@@ -1,6 +1,6 @@
 {
   "name": "movie-recommendation-weaviate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "add_data.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "weaviate-client": "^2.3.0"
+    "weaviate-client": "^2.3.0",
+    "node-pandas": "git+https://github.com/stack-finance/node-pandas.git",
   }
 }

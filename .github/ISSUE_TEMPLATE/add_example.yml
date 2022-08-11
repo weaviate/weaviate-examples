@@ -1,0 +1,33 @@
+name: Add a new example
+description: Add a new example using Weaviate Vector Search engine
+body:
+  - type: markdown
+    attributes:
+      value: |
+
+        * For questions, ask in [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw).
+        * Before you file an issue read the [Contributing guide](https://github.com/semi-technologies/weaviate-io/blob/main/CONTRIBUTING.md).
+        * Check to make sure someone hasn't already opened a similar [issue](https://github.com/semi-technologies/weaviate-io/issues).
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: This project has a Code of Conduct that all participants are expected to understand and follow.
+      options:
+        - label: I have read and agree to the Weaviate's [Code of Conduct](https://github.com/semi-technologies/weaviate-io/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+
+  - type: textarea
+    attributes:
+      label: What does your app/demo do?
+      description: Give as much detail as you can to help us understand the demo you want to see.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Which Weaviate module are you planning to use?
+      description: Mention the Weaviate module which you will be using in your app/demo.
+    validations:
+      required: true

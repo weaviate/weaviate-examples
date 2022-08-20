@@ -11,6 +11,7 @@ const client = weaviate.client({
 function App() {
   const [results, setResults] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [showMore, setShowMore] = useState(false);
 
   const onChange = event => {
     setSearchTerm(event.target.value);
@@ -22,8 +23,7 @@ function App() {
         .get()
         .withClassName('MultiModal')
         .withNearText({concepts: [searchTerm]})
-        .withFields('filename image _additional{ certainty }')
-        .withLimit(1)
+        .withFields('filename image _additional{ certainty id }')
         .do();
       setResults(res);
     }
@@ -32,23 +32,49 @@ function App() {
   }, [searchTerm]);
 
   const onSubmit = event => {
+    setShowMore(false)
     fetch();
     event.preventDefault();
   };
 
-  const getResult = results => {
-    const certainty = results['data']['Get']['MultiModal'][0]['_additional']['certainty']
+  const getResults = results => {
+    const head = results['data']['Get']['MultiModal'][0]
     return <div>
-        <img
-          style={{ maxHeight: '400px' }}
-          alt="Certainty: "
-          src={
-            'data:image/jpg;base64,' +
-            results['data']['Get']['MultiModal'][0]['image']
-          }
-        />
-        <div >Certainty: {certainty*100} %</div>
+        <div>
+          <img
+            style={{ maxHeight: '400px' }}
+            alt="Certainty: "
+            src={
+              'data:image/jpg;base64,' +
+              head['image']
+            }
+          />
+          <div >Certainty: {(head['_additional']['certainty']*100).toFixed(2)} %</div>
+        </div>
       </div>
+  }
+
+  const getRestResults = (results) => {
+    const [, ...rest] = results['data']['Get']['MultiModal']
+    return <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingTop: "20px"}}>
+      {
+        rest.map(obj => {
+          return (
+            <div key={obj['_additional']['id']}>
+              <img
+                style={{ maxHeight: '100px' }}
+                alt="Certainty: "
+                src={
+                  'data:image/jpg;base64,' +
+                  obj['image']
+                }
+              />
+              <div >Certainty: {(obj['_additional']['certainty']*100).toFixed(2)} %</div>
+            </div>
+          )
+        })
+      }
+    </div>
   }
 
   return (
@@ -86,7 +112,19 @@ function App() {
           </div>
         </div>
       </form>
-      {results.data && getResult(results)}
+      {results.data && getResults(results)}
+      {results.data &&
+      <div className="control" style={{paddingTop: "20px"}}>
+        <input
+          type="button"
+          className="button is-info"
+          value={showMore ? "Show less" : "Show more"}
+          onClick={() => setShowMore(!showMore)}
+          style={{backgroundColor: '#fa0171'}}
+        />
+      </div> }
+      { results.data && showMore && getRestResults(results) }
+      <div style={{height:'50px'}} />
     </div>
   );
 }

@@ -1,0 +1,51 @@
+.container {
+  flex-flow: column;
+  display: flex;
+  align-self: center;
+  align-items: center;
+}
+
+.contents {
+  flex-flow: column;
+  display: flex;
+  width: 700px;
+}
+
+.weaviate {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+  flex-flow: row;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.upload {
+  width: 300px;
+  margin-right: 10px;
+}
+
+.row-image {
+  max-height: 100px;
+}
+
+.row-details {
+  margin-left: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

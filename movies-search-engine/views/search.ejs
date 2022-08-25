@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../CSS/styles.pure.css" />
+<html>
+
+  <!-- NAVBAR STARTS -->
+
+  <div class="nav-wrapper">
+    <div>
+        <div class="nav">
+          <form action="/" class="search_form" spellcheck="false" method="get"> 
+            <button type="submit">
+                <img src="../engine.jpg" ></img>
+              </button> 
+            </form>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="https://weaviate.io/" target=”_blank”>Weaviate Website</a></li>
+                <li><a href="https://github.com/semi-technologies/weaviate" target=”_blank”>Github</a></li>
+                <li><a href="https://weaviate.slack.com/ssb/redirect" target=”_blank”>Slack</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR ENDS -->
+
+<!-- Search Space Starts -->
+
+<center>
+<div class="logo">
+  <img alt="Weaviate"  class="search" src="../img.jpeg">
+</div>
+<form action="/search/" id="filter_search_form" class="search_form" spellcheck="false" method="get"> 
+
+<div class="bar">
+  <input class="searchbar" type="text" name="searched_data" title="Search" autocomplete="off">
+</div>
+<div class="buttons" style="display: flex;">
+  <button class="button btn2" name="filter_search">Filter Search</button>
+  <button class="button btn2" name="semantic_search">Semantic Search</button>
+</form>
+
+ 
+</center>
+
+<!-- Search Space Starts -->
+
+
+<% if(movie_info.length!=null){%>
+<div class="section-header">
+    Top Results For Your Search
+</div>
+
+<div class="dropdown">
+  <button class="dropbtn">Sort By&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></button>
+  <div class="dropdown-content">
+    
+    <form action="/sort" id="form-id1" spellcheck="false" method="get"> 
+      <a  onclick="document.getElementById('form-id1').submit();">
+      <li><input type="hidden"  value="rating_value asc" name="sorting_basis">By Rating (Asc)</li>
+    </a>
+    </form>
+    <form action="/sort" id="form-id2" spellcheck="false" method="get"> 
+      <a  onclick="document.getElementById('form-id2').submit();">
+      <li><input type="hidden"  value="rating_value desc" name="sorting_basis2">By Rating (Desc)</li>
+    </a>
+  </form>
+      <form action="/sort" id="form-id3" spellcheck="false" method="get"> 
+        <a onclick="document.getElementById('form-id3').submit();">
+      <li><input type="hidden"  value="title asc" name="sorting_basis3">By Name (Asc)</li>
+    </a>
+  </form>
+      <form action="/sort" id="form-id4" spellcheck="false" method="get"> 
+        <a onclick="document.getElementById('form-id4').submit();">
+      <li><input type="hidden"  value="title desc" name="sorting_basis4">By Name (Desc)</li>
+    </a>
+  </form>
+      <form action="/sort" id="form-id5" spellcheck="false" method="get"> 
+        <a onclick="document.getElementById('form-id5').submit();">
+      <li><input type="hidden"  value="date_published asc" name="sorting_basis5">By Release Date (Asc)</li>
+    </a>
+  </form>
+      <form action="/sort" id="form-id6" spellcheck="false" method="get"> 
+        <a onclick="document.getElementById('form-id6').submit();">
+      <li><input type="hidden"  value="date_published desc" name="sorting_basis6">By Release Date (Desc)</li>
+    </a>
+  </form>
+  </div>
+</div>
+<%}%>
+  <section class="popular-tours">
+    <div class="cards-wrapper">
+        <!-- MOVIE ITEM -->
+        <% for (let i = 0;i<movie_info.length; i++) { %> 
+        <div class="card">
+            <div class="movie-item">
+                <form
+                action=<%="/movie/"+movie_info[i].movie_id %>
+                method="get"
+              >
+              <button type="submit">
+                <img src="<%=movie_info[i].poster_link%>" alt="">
+            </button>
+                <div class="movie-item-content">
+                    <div class="movie-item-title" style = "text-transform:capitalize;">
+                        <%=movie_info[i].title  %>
+                    </div>
+                    <div class="movie-infos">
+                        <div class="movie-info">
+                            <i class="bx bxs-star"></i>
+                            <span><%=movie_info[i].rating_value%></span>
+                        </div>
+                        <div class="movie-info">
+                            <i class="bx bxs-time"></i>
+                            <span><%=movie_info[i].duration%></span>
+                        </div>
+                        <div class="movie-info">
+                            <span style = "text-transform:capitalize;"><%=movie_info[i].director%></span>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <% } %> 
+</div>
+</section>
+<script src="../js/jquery-3.4.1.min.js"></script>
+    </body>
+</html>
+

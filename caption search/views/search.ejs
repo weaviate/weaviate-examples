@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="CSS/style.css" />
+<html>
+  <center>
+    <div class="logo">
+      <img alt="Weaviate" src="<%=img_url  %> ">
+    </div>
+    <form action="/search" spellcheck="false" method="post"> 
+    <div class="bar">
+      <input class="searchbar" autocomplete="off" name="searched_data" type="text" title="Search" placeholder="Type your question here!">
+      
+    </div>
+    <div class="buttons">
+      <button class="button" type="submit">Ask!</button>
+     </div>
+     </form>
+     <% if(answer==null){%>
+     <h2  class="answer" style="font-size: 5em; color:#fa0171;  display: inline;">No Results for given Question!</h2>
+     <% } %> 
+     <% if(answer!=null){%>
+      <% if(answer.length!=null){%>
+       <h2  class="answer" style="font-size: 2em; color:#fa0171;  display: inline;">The answer found is:</h2> <span style="font-size: 2em;"><b><%=answer%></b></span>
+       <% } %> 
+       <% } %> 
+      <br>
+     <% if(link!=null){%>
+     <% if(link.length!=null){%>
+      <h2  class="answer" style="font-size: 2em; color:#fa0171;  display: inline;">Follow This Link: <a target=”_blank”  href=<%=link%>><%=link%></a></h2>
+      <% } %> 
+      <% } %> 
+
+    </body>
+</center>
+</html>

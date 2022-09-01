@@ -1,0 +1,2 @@
+youtube_transcript_api==0.4.4
+weaviate_client==3.5.1

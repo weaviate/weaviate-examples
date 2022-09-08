@@ -13,6 +13,6 @@
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "weaviate-client": "^2.3.0",
-    "node-pandas": "git+https://github.com/stack-finance/node-pandas.git",
+    "node-pandas": "git+https://github.com/stack-finance/node-pandas.git"
   }
 }

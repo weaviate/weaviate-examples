@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "init": "^0.1.2",
+    "python-shell": "^3.0.1",
+    "weaviate": "^0.0.14",
+    "weaviate-client": "^2.11.1",
+    "youtube-player": "^5.5.2",
+    "youtube-video-js": "^3.6.0"
+  }
+}

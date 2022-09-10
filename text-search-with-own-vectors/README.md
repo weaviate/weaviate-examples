@@ -1,19 +1,19 @@
-# Text searh with weaviate using own vectors and SBERT
+# Text search with Weaviate using own vectors and SBERT
 
 The file textSearch.py contains the code to do a text search by entering some query.
 
-To begin with, setup weaviate on your machine using the installation instructions on the weaviate website.
+To begin with, setup Weaviate on your machine using the installation instructions on the Weaviate website.
 
-To run the example, you will need to spin up your weaviate instance and to run  the python file textSearch.py in an environment having the following python libraries:
-1. weaviate
+To run the example, you will need to spin up your Weaviate instance and to run the Python file textSearch.py in an environment having the following python libraries:
+1. Weaviate
 2. uuid
-3. sentence-transformer (needed for SBERT)
-4. torch
+3. Sentence-transformer (needed for SBERT)
+4. Torch
 
-Initially, you will have to load the SBERT model using the code in python "sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')" .
+Initially, you will have to load the SBERT model using the code in Python "sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')".
 After that you can use pickle to store and load the model for further use. 
 
-I have used SBERT model to convert text into vectors, which are then loaded in weaviate along with the text.
+I have used SBERT model to convert text into vectors, which are then loaded in Weaviate along with the text.
 When a user enters some query, the query is also mapped to a vector using the same SBERT model and the text
 with the most similar vector (found using cosine distances) is returned.
 

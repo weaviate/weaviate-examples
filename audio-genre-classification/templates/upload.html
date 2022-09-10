@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"/>
+    <title>Audio Genre Classifier</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 70%;
+      }
+      body {
+        font-family: "Rubik", sans-serif;
+        line-height: 1;
+        font-weight: 400;
+        color: #555;
+      }
+      body,
+      html {
+        overflow-x: hidden;
+      }
+      header {
+        position: relative;
+      }
+      header {
+        background-color: #fa0171;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+      }
+      header h1 {
+        font-size: 7rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+        margin: 0;
+      }
+      .board {
+        max-width: 130rem;
+        margin: 0 auto;
+        padding: 0 3.2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 9.6rem;
+      }
+      .imgs {
+        object-fit: cover;
+        margin: 1rem 1rem;
+      }.player{
+        text-align-last: center;
+      }
+      .btn,
+      .btn:link,
+      .btn:visited {
+        font-weight: 600;
+        font-size: 1.5em;
+        text-decoration: none;
+        padding: 1.6rem 3.2rem;
+        color: white;
+        background-color: #fa0171  ;
+        border-radius: 500px;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 300ms;
+      }
+      
+      .btn:hover,
+      .btn:active {
+        background-color: #fd117b;
+        box-shadow: 0 0 2rem 0.8rem #fa0171;
+      }
+      .btn--main {
+        margin-top: 10rem;
+        margin-bottom: 3rem;
+      }
+      .first span {
+        font-size: 1.5rem;
+        margin-right: 2rem;
+        text-transform: uppercase;
+      }
+      .btn--predict {
+        border: 0;
+        padding: 0.8rem 1.6rem;
+        display: block;
+        margin: 3rem auto;
+        width: 40rem;
+      }
+      .btn--choose {
+        color: #444;
+        background-color: white;
+        border: 0px;
+        display: inline-block;
+      }
+      input::-webkit-file-upload-button {
+        border: 0;
+        padding: 0.8rem 2rem;
+        border-radius: 500px;
+        font-weight: 500;
+        color: white;
+        background-color: #fa0171;
+        border: 1px solid #ffffff;
+        transition: all 0.3s;
+        margin-right: 4rem;
+      }
+      input::-webkit-file-upload-button:hover,
+      input::-webkit-file-upload-button:active {
+        color: #fa0171;
+        background-color: white;
+        border: 1px solid #fa0171;
+        font-weight: 700;
+        margin-right: 2rem;
+      }
+      .main-heading {
+        display: block;
+        margin-top: 3rem;
+        font-size: 3rem;
+        color: black;
+        font-weight: 400;
+        margin-bottom: 2rem;
+      
+        text-align: center;
+      }
+      .address {
+        margin-top: 1.5rem;
+        display: block;
+      }
+      .music{
+        padding: 2em 4em;
+      }
+      .predict-para {
+        margin-top: 4rem;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        margin-bottom: 5rem;
+        border: 2px solid rgb(240, 240, 240);
+        padding: 3rem;
+        font-size: 1.4rem;
+      }
+      .second img {
+        width: 80%;
+        height: auto;
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        transform: translate(9.8%, 0);
+      }
+      .second {
+        align-self: start;
+      }
+      .top-3 {
+        margin-left: 3rem;
+      }
+      
+        @media (max-width: 850px) {
+        header h1 {
+          font-size: 5rem;
+          
+        }
+        .btn--predict {
+          width: 25rem;
+        }
+        .predict-para {
+          margin: 2rem;
+          padding: 2rem;
+        }
+        .browse {
+          display: inline-block;
+          margin-bottom: 1rem;
+        }
+      }
+      @media (max-width: 700px) {
+        header h1 {
+          font-size: 4rem; 
+        }
+        .btn--predict {
+          width: 18rem;
+        }
+        .predict-para {
+          margin: 2rem;
+          padding: 2rem;
+        }
+      
+        .board {
+          gap: 1rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+      @media (max-width: 550px) {
+        header h1 {
+          font-size: 2.8rem;
+          
+        }
+        .btn--predict {
+          width: 18rem;
+        }
+        .predict-para {
+          margin: 2rem;
+          padding: 2rem;
+        }
+      
+        .board {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+          </style>
+  </head>
+
+<body>
+<header>
+  <h1>Audio Genre Classifier</h1>
+</header>
+<form action="/" method="post" enctype="multipart/form-data">
+  <section class="board">
+    <div class="first">
+      <label for="first_name"
+        ><b class="main-heading">UPLOAD AUDIO</b></label
+      ><br />
+      <div class="top-3">
+        <span class="browse">Browse</span>
+        <input class="btn--choose" type="file" name="audio_upload" />
+      </div>
+      <button class="btn btn--predict" type="submit">Predict</button>
+      {% if filename %}
+      <p class="predict-para">This Audio Belongs To {{ pred }}</p>
+      {% endif %}
+    </div>
+    {% if filename %}
+    <div class="second">
+        <img  class="imgs" src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+    
+    {% endif %}
+  </section>
+</form>
+    <!-- This is a div for audiowave to be mounted by wavesurfer -->
+    <div id="waveform"></div>
+
+    <!-- Then we have some buttons for playing, stopping and pausing
+ Here we are using pure css classes and font awesome icons
+  Each button has onclick event assigned that we program later -->
+
+  {% if filename %}
+  <centre>
+    <div class="player">
+    <button
+      id="play"
+      class="pure-button pure-button-secondary music"
+      onclick="startRecording()"
+    >
+      <i class="fa fa-play-circle "></i> Play
+    </button>
+    <button
+      id="pause"
+      class="pure-button pure-button-secondary music"
+      onclick="pauseRecording()"
+    >
+      <i class="fa fa-pause"></i> Pause
+    </button>
+    <button
+      id="stop"
+      class="pure-button pure-button-primary music"
+      onclick="stopRecording()"
+    >
+      <i class="fa fa-stop"></i> Stop
+    </button>
+  </div>
+  </centre>
+    {% endif %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.53/wavesurfer.min.js"></script>
+    <script>
+      
+		let trackUrl = '{{track_url}}'
+		var wavesurfer = WaveSurfer.create({
+		container: '#waveform',
+		// Here you can use wavesurfer docs on configuration
+		// to customize your player!
+		})
+		wavesurfer.load(trackUrl)
+
+		// We play, pause and stop our audio file with instanciated wavesurfer.js
+		function startRecording() {
+		console.log("hello")
+		wavesurfer.play()
+		}
+		function pauseRecording() {
+		wavesurfer.pause()
+		}
+		function stopRecording() {
+		wavesurfer.stop()
+		}
+    </script>
+    
+  </body>
+</html>

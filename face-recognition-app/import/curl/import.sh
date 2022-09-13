@@ -3,7 +3,7 @@
 import_images() {
   name=`<$1/name.txt`
   echo $name
-  for img in $1/*.jpg; do
+  for img in $1/*.jp*; do
     encoded=$(cat $img | base64)
     curl \
     -X POST \

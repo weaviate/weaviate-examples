@@ -1,0 +1,23 @@
+img{
+    height: 15vh; 
+    width: 15vw;
+}
+
+.uploadColumn{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.showColumn{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 60vh;
+    width: 60vw;
+}
+
+.uploadedImg{
+    width: auto;
+    height: 200px;
+}

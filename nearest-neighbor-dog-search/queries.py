@@ -2,13 +2,15 @@ import weaviate
 
 client = weaviate.Client("http://localhost:8080")
 
+# https://link.semi.technology/3rktlbq to run the query in the Weaviate Console using GraphQL
+
 # Run this query to find dogs similar to Golden Retrievers based off of the image
 
 # nearImage = {"image": "./images/Golden-Retriever.jpg"}
 
 # result = (
 #   client.query
-#   .get("Dog", "filename")
+#   .get("Dog", "filepath")
 #   .with_near_image(nearImage, encode=True)
 #   .do()
 # )
@@ -26,7 +28,7 @@ client = weaviate.Client("http://localhost:8080")
 
 # query_result = (
 #     client.query
-#     .get("Dog", ["filename", "weight"])
+#     .get("Dog", ["filepath", "weight"])
 #     .with_where(where_filter)
 #     .do()
 # )
@@ -38,12 +40,13 @@ client = weaviate.Client("http://localhost:8080")
 where_filter = {
     "path": ["weight"],
     "operator": "LessThan",
-    "valueInt": 40
+    "valueInt": 60
 }
 
 query_result = (
     client.query
-    .get("Dog", ["filename", "weight"])
+    .get("Dog", ["filepath", "weight"])
+    .with_limit(3)
     .with_where(where_filter)
     .do()
 )

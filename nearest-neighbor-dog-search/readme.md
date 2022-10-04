@@ -1,4 +1,4 @@
-### Welcome to the Weaviate Dog Classifier Demo! 
+### Welcome to the Dog Search Demo! 
 
 ### Dataset 
 This demo contains 10 images of different dog breeds. 
@@ -10,5 +10,6 @@ This demo contains 10 images of different dog breeds.
 4. Convert the images to base64 (python images-to-base64.py)
 5. Upload the encoded images (python upload-encoded-images.py)
 6. Run the test queries (python queries.py)
+7. Run the Python Flask application (python application.py) and paste in the URL to your browser
 
 

@@ -13,9 +13,29 @@ client = weaviate.Client("http://localhost:8080")
 # defining the pages that will be on the website 
 @app.route("/") # define how you can access this page 
 def home(): # home page
-     return render_template("index.html", content = [{"path": "./static/Bernese-Mountain-Dog.jpg", "weight": 90},{"path": "./static/Corgi.jpg", "weight": 25}, {"path": "./static/Goldendoodle.jpg", "weight": 45},
-     {"path": "./static/Rottweiler.jpg", "weight": 103}, {"path": "./static/Australian-Shepherd.jpg", "weight": 52}, {"path": "./static/Golden-Retriever.jpg", "weight": 65}, {"path": "./static/German-Shepherd.jpg", "weight": 70},
-     {"path": "./static/Siberian-Husky.jpg", "weight": 48}, {"path": "./static/Labrador-Retriever.jpg", "weight": 65},{"path": "./static/French-Bulldog.jpg", "weight": 22} ])
+     return render_template("index.html", content = [
+        {"path": "./static/Bernese-Mountain-Dog.jpg"},
+        {"path": "./static/Corgi.jpg"}, 
+        {"path": "./static/Goldendoodle.jpg"},
+        {"path": "./static/Rottweiler.jpg"}, 
+        {"path": "./static/Australian-Shepherd.jpg"}, 
+        {"path": "./static/Golden-Retriever.jpg"}, 
+        {"path": "./static/German-Shepherd.jpg"},
+        {"path": "./static/Siberian-Husky.jpg"}, 
+        {"path": "./static/Labrador-Retriever.jpg"},
+        {"path": "./static/French-Bulldog.jpg"} 
+        ])
+
+def imageSearch(img_str):
+    sourceImage = { "image": img_str}
+
+    weaviate_results = client.query.get(
+        "Dog", ["filepath","breed"]
+    ).with_near_image(
+        sourceImage, encode=False
+    ).with_limit(2).do()
+
+    return weaviate_results["data"]["Get"]["Dog"]
 
 @app.route("/process_image", methods = ["POST"])
 def process_image():
@@ -23,14 +43,15 @@ def process_image():
     buffer = BytesIO()
     uploaded_file.save(buffer, format="JPEG")
     img_str = base64.b64encode(buffer.getvalue()).decode()
-    nearImage = { "image": img_str}
-    weaviate_results = client.query.get("Dog", "filepath").with_near_image(nearImage, encode=False).with_limit(2).do()
-    weaviate_results = weaviate_results["data"]["Get"]["Dog"]
+
+    weaviate_results = imageSearch(img_str)
     print(weaviate_results)
+
     results = []
     for result in weaviate_results:
         results.append({
-            "path": "./static/" + result["filepath"]
+            "path": "./static/" + result["filepath"], 
+            "breed": result["breed"]
          })
     print(f"\n {results} \n")
     return render_template("index.html", content = results, dog_image = img_str)

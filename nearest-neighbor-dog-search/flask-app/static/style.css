@@ -13,8 +13,8 @@ img{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 60vh;
-    width: 60vw;
+    height: 50vh;
+    width: 50vw;
 }
 
 .uploadedImg{

@@ -2,7 +2,7 @@ import weaviate
 
 client = weaviate.Client("http://localhost:8080")
 
-# creating the class "Dog" with the following properties: filename, image, weight, and filepath
+# creating the Dog class with the following properties: filename, image, weight, and filepath
 
 schema = {
     "classes": [
@@ -20,25 +20,25 @@ schema = {
             "vectorizer": "img2vec-neural", # the img2vec-neural Weaviate vectorizer
             "properties": [
                 {
+                    "name": "breed",
+                    "dataType": [
+                        "string"
+                    ],
+                    "description": "name of dog breed",
+                },
+                {
+                    "name": "image",
                     "dataType": [
                         "blob"
                     ],
                     "description": "image",
-                    "name": "image"
                 },
                 {
-                    "dataType": [
-                        "int"
-                    ],
-                    "description": "average weight of dog",
-                    "name": "weight"
-                },
-                {
+                    "name": "filepath",
                     "dataType":[
                         "string"
                     ],
                     "description": "filepath of the images",
-                    "name": "filepath"
                 }
             ]
         }

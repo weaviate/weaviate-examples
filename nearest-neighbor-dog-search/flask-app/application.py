@@ -19,8 +19,9 @@ def imageSearch(img_str):
             img_str(str): base64 of the image 
         
         Returns:
-            filepath (str): filepath of the image
-            breed (str): breed of the dog
+            returns a list of dictionaries, each dictionary has keys:
+                "filepath": (str) // the filepath to the image
+                "breed":    (str) // the breed of the dog
     """
     sourceImage = { "image": img_str}
 

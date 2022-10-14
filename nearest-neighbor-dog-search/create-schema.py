@@ -46,3 +46,5 @@ schema = {
 
 # adding the schema 
 client.schema.create(schema)
+
+print("The schema has been defined.")

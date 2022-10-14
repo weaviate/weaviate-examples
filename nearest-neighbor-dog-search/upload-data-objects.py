@@ -45,3 +45,4 @@ for encoded_file_path in os.listdir("./base64_images"):
     client.data_object.create(data_properties, "Dog", id)
 
 
+print("The objects have been uploaded to Weaviate.")

@@ -38,16 +38,16 @@ if client.is_ready():
     @app.route("/") # defining the pages that will be on the website 
     def home(): # home page
         return render_template("index.html", content = [
-            {"path": "./static/Bernese-Mountain-Dog.jpg"},
-            {"path": "./static/Corgi.jpg"}, 
-            {"path": "./static/Goldendoodle.jpg"},
-            {"path": "./static/Rottweiler.jpg"}, 
-            {"path": "./static/Australian-Shepherd.jpg"}, 
-            {"path": "./static/Golden-Retriever.jpg"}, 
-            {"path": "./static/German-Shepherd.jpg"},
-            {"path": "./static/Siberian-Husky.jpg"}, 
-            {"path": "./static/Labrador-Retriever.jpg"},
-            {"path": "./static/French-Bulldog.jpg"} 
+            {"path": "./static/img/Bernese-Mountain-Dog.jpg"},
+            {"path": "./static/img/Corgi.jpg"}, 
+            {"path": "./static/img/Goldendoodle.jpg"},
+            {"path": "./static/img/Rottweiler.jpg"}, 
+            {"path": "./static/img/Australian-Shepherd.jpg"}, 
+            {"path": "./static/img/Golden-Retriever.jpg"}, 
+            {"path": "./static/img/German-Shepherd.jpg"},
+            {"path": "./static/img/Siberian-Husky.jpg"}, 
+            {"path": "./static/img/Labrador-Retriever.jpg"},
+            {"path": "./static/img/French-Bulldog.jpg"} 
             ])
 
     @app.route("/process_image", methods = ["POST"]) # save the uploaded image and convert it to base64
@@ -64,7 +64,7 @@ if client.is_ready():
             results = []
             for result in weaviate_results:
                 results.append({
-                    "path": "./static/" + result["filepath"], 
+                    "path": "./static/img/" + result["filepath"], 
                     "breed": result["breed"]
                 })
 

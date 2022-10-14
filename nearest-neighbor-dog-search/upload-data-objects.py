@@ -18,7 +18,7 @@ weight_dict = {
 def get_weight(breed_name):
     if breed_name in weight_dict:
         return weight_dict[breed_name]
-    return 10
+    return 50
 
 def set_up_batch():
     """

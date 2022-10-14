@@ -27,3 +27,9 @@ Run the Python Flask application and run http://localhost:5000
 ```bash
 python flask-app/application.py 
 ```
+
+### Run the query 
+Run the query to see dogs that are under 60 pounds
+```bash
+python query.py
+```

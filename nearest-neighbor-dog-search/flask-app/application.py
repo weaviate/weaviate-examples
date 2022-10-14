@@ -5,6 +5,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 import weaviate
+import os
 
 # creating the application and connecting it to the Weaviate local host 
 app = Flask(__name__) 
@@ -33,22 +34,31 @@ def imageSearch(img_str):
 
     return weaviate_results["data"]["Get"]["Dog"]
 
+def list_images():
+    """
+    Checks the static/img folder and returns a list of image paths
+    """
+    if os.path.exists('./flask-app'):
+        img_path = "./flask-app/static/img/"
+    elif os.path.exists('./static'):
+        img_path = "./static/img/"
+    else:
+        return []
+
+    images = []
+    for file_path in os.listdir(img_path):
+        images.append({
+            "path": file_path
+        })
+
+    return images
+
+
 if client.is_ready():    
     # Defining the pages that will be on the website 
     @app.route("/") # defining the pages that will be on the website 
     def home(): # home page
-        return render_template("index.html", content = [
-            {"path": "./static/img/Bernese-Mountain-Dog.jpg"},
-            {"path": "./static/img/Corgi.jpg"}, 
-            {"path": "./static/img/Goldendoodle.jpg"},
-            {"path": "./static/img/Rottweiler.jpg"}, 
-            {"path": "./static/img/Australian-Shepherd.jpg"}, 
-            {"path": "./static/img/Golden-Retriever.jpg"}, 
-            {"path": "./static/img/German-Shepherd.jpg"},
-            {"path": "./static/img/Siberian-Husky.jpg"}, 
-            {"path": "./static/img/Labrador-Retriever.jpg"},
-            {"path": "./static/img/French-Bulldog.jpg"} 
-            ])
+        return render_template("index.html", content = list_images())
 
     @app.route("/process_image", methods = ["POST"]) # save the uploaded image and convert it to base64
 
@@ -64,7 +74,7 @@ if client.is_ready():
             results = []
             for result in weaviate_results:
                 results.append({
-                    "path": "./static/img/" + result["filepath"], 
+                    "path": result["filepath"], 
                     "breed": result["breed"]
                 })
 

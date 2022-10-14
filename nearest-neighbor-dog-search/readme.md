@@ -1,7 +1,7 @@
-### Welcome to the Dog Search Demo! 
+## Welcome to the Dog Search Demo! 
 
 ### Dataset 
-This demo contains 10 images of different dog breeds. 
+The dataset currently contains ten images of different dog breeds. You can also build on this and add your own images to the dataset!
 
 ### To run this demo, follow the order below:
 1. Make sure you have Weaviate installed and set up. [Check out the documentation](https://weaviate.io/developers/weaviate/current/installation/index.html) for more information!

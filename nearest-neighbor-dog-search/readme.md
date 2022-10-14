@@ -19,11 +19,11 @@ This demo contains 10 images of different dog breeds.
     ```
 5. Upload the encoded images 
     ```bash
-    python upload-encoded-images.py
+    python upload-data-objects.py
     ```
 
 ### Run the application
 Run the Python Flask application and run http://localhost:5000
 ```bash
-python application.py 
+python flask-app/application.py 
 ```

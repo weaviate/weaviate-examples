@@ -22,3 +22,5 @@ def convert_images_to_base64():
 
 clear_base64_images()
 convert_images_to_base64()
+
+print("The images have been converted to base64.")

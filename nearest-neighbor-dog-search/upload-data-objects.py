@@ -83,3 +83,5 @@ client = weaviate.Client("http://localhost:8080")
 set_up_batch()
 clear_up_dogs()
 import_data()
+
+print("The objects have been uploaded to Weaviate.")

@@ -1,12 +1,24 @@
 import os 
 import base64
+import shutil
 
-# Do NOT run this file. The images have already been converted and are in the base64_images folder
+def clear_base64_images():
+    base_folder = "base64_images"
 
-os.mkdir("base64_images") # create the base64_images folder 
-img_path = "./flask-app/static/img/"
+    # if the base64_images folder => delete it 
+    if os.path.exists(base_folder):
+        shutil.rmtree(base_folder)
+    
+    # create the base64_images folder
+    os.mkdir(base_folder)  
 
-for file_path in os.listdir(img_path): # grabbing the images in the images folder and converting them to base64
-    if ".DS_Store" not in file_path:
-        filename = file_path.replace(".jpg", "").split("/")[-1]
-        os.system("cat " + img_path + file_path + " | base64 > base64_images/" + filename + ".jpg")
+def convert_images_to_base64():
+    img_path = "./flask-app/static/img/"
+
+    for file_path in os.listdir(img_path): # grabbing the images in the images folder and converting them to base64
+        if ".DS_Store" not in file_path:
+            filename = file_path.split("/")[-1]
+            os.system("cat " + img_path + file_path + " | base64 > base64_images/" + filename + ".b64")
+
+clear_base64_images()
+convert_images_to_base64()

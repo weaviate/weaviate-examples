@@ -23,7 +23,7 @@ The dataset currently contains ten images of different dog breeds. You can also 
     ```
 
 ### Run the application
-Run the Python Flask application and run http://localhost:5000
+Run the Python Flask application and go to http://localhost:5000
 ```bash
 python flask-app/application.py 
 ```

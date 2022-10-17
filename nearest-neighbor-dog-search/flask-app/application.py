@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "/temp_images"
 client = weaviate.Client("http://localhost:8080")
 
-def WeaviateImgSearch(img_str):
+def weaviate_img_search(img_str):
     """
     This function uses the nearImage operator in Weaviate. 
     """
@@ -60,7 +60,7 @@ if client.is_ready():
             uploaded_file.save(buffer, format="JPEG")
             img_str = base64.b64encode(buffer.getvalue()).decode()
 
-            weaviate_results = WeaviateImgSearch(img_str)
+            weaviate_results = weaviate_img_search(img_str)
             print(weaviate_results)
 
             results = []

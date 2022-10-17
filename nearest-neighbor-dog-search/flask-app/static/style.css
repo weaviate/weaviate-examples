@@ -1,0 +1,24 @@
+img {
+    max-height: 20vh;
+    max-width: 20vw;
+}
+
+.uploadColumn{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.showColumn{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 50vh;
+    width: 50vw;
+}
+
+.uploadedImg {
+    width: auto;
+    max-height: 300px;
+    border: 5px solid #555;
+}

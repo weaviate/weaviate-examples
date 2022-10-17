@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Home Page </title>
+    <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class = "uploadColumn">
+        <form action = "{{ url_for('process_image') }}" method="post" enctype="multipart/form-data">
+            <input type="file" id="myFile" name="filepath">
+            <input type="submit">
+            {% if dog_image %}
+            <br/>
+            <img class="uploadedImg" 
+                 src='data:image/jpeg;base64, {{dog_image}}'
+            />
+            {% endif %}
+        </form>
+    </div>
+        
+    <h2>RESULTS</h2>
+    <div class = "showColumn">
+        {% for x in content %}
+        <div class="imgCard">
+            <img src = {{ "./static/img/" + x["path"] }}> </img>
+            <h4> {{ x["breed"] }} </h4>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -2,7 +2,7 @@ import weaviate
 
 client = weaviate.Client("http://localhost:8080")
 
-# creating the Dog class with the following properties: breed, image, weight, and filepath
+# creating the Dog class with the following properties: breed, image, and filepath
 
 schema = {
     "classes": [
@@ -28,11 +28,6 @@ schema = {
                     "name": "image",
                     "dataType": ["blob"],
                     "description": "image",
-                },
-                {
-                    "name": "weight",
-                    "dataType": ["int"],
-                    "description": "average weight of the breed",
                 },
                 {
                     "name": "filepath",

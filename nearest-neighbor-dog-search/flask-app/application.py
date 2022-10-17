@@ -48,12 +48,13 @@ def list_images():
 
 if client.is_ready():    
     # Defining the pages that will be on the website 
-    @app.route("/") # defining the pages that will be on the website 
+    @app.route("/") 
     def home(): # home page
         return render_template("index.html", content = list_images())
 
     @app.route("/process_image", methods = ["POST"]) # save the uploaded image and convert it to base64
 
+    # process the image upload request by converting it to base64 and querying Weaviate
     def process_image():
             uploaded_file = Image.open(request.files['filepath'].stream)
             buffer = BytesIO() 

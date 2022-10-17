@@ -2,24 +2,6 @@ from fileinput import filename
 import weaviate
 import os, re
 
-weight_dict = {
-    "Australian Shepherd": 52,
-    "Bernese Mountain Dog": 94,
-    "Corgi": 26,
-    "French Bulldog": 22,
-    "German Shepherd": 68,
-    "Golden Retriever": 70,
-    "Goldendoodle": 40,
-    "Labrador Retriever": 67,
-    "Rottweiler": 103,
-    "Siberian Husky": 47
-}
-
-def get_weight(breed_name):
-    if breed_name in weight_dict:
-        return weight_dict[breed_name]
-    return 50
-
 def set_up_batch():
     """
     Prepare batching configuration to speed up deleting and importing data.
@@ -73,10 +55,8 @@ def import_data():
                 "breed": breed,
                 "image": base64_encoding,
                 "filepath": image_file,
-                "weight": get_weight(breed)
             }
 
-            # Uploading each data object to Weaviate 
             batch.add_data_object(data_properties, "Dog")
 
 client = weaviate.Client("http://localhost:8080")

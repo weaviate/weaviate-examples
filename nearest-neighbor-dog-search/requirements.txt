@@ -2,3 +2,4 @@ weaviate-client==3.9.0
 
 Flask==2.2.2
 
+Pillow

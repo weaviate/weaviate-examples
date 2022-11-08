@@ -1,5 +1,3 @@
-from fileinput import filename
-from unittest import result
 from flask import Flask, render_template, request
 from PIL import Image
 import base64
@@ -7,10 +5,14 @@ from io import BytesIO
 import weaviate
 import os
 
+WEAVIATE_URL = os.getenv('WEAVIATE_URL')
+if not WEAVIATE_URL:
+    WEAVIATE_URL = 'http://localhost:8080'
+
 # creating the application and connecting it to the Weaviate local host 
 app = Flask(__name__) 
 app.config["UPLOAD_FOLDER"] = "/temp_images"
-client = weaviate.Client("http://localhost:8080")
+client = weaviate.Client(WEAVIATE_URL)
 
 def weaviate_img_search(img_str):
     """
@@ -79,4 +81,4 @@ else:
 
 # run the app
 if __name__ == "__main__": 
-    app.run()
+    app.run(host='0.0.0.0', port='5000', processes=4)

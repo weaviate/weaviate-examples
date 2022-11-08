@@ -2,10 +2,8 @@
 
 set -eou pipefail
 
-docker compose up -d
-
 # time for weaviate to get live
-sleep 2
+sleep 5
 
 python3 create-schema.py
 

@@ -1,6 +1,9 @@
-from fileinput import filename
-import weaviate
 import os, re
+import weaviate
+
+WEAVIATE_URL = os.getenv('WEAVIATE_URL')
+if not WEAVIATE_URL:
+    WEAVIATE_URL = 'http://localhost:8080'
 
 def set_up_batch():
     """
@@ -59,7 +62,7 @@ def import_data():
 
             batch.add_data_object(data_properties, "Dog")
 
-client = weaviate.Client("http://localhost:8080")
+client = weaviate.Client(WEAVIATE_URL)
 set_up_batch()
 clear_up_dogs()
 import_data()

@@ -1,6 +1,13 @@
+import os
 import weaviate
 
-client = weaviate.Client("http://localhost:8080")
+WEAVIATE_URL = os.getenv('WEAVIATE_URL')
+if not WEAVIATE_URL:
+    WEAVIATE_URL = 'http://localhost:8080'
+
+print(WEAVIATE_URL, flush=True)
+
+client = weaviate.Client(WEAVIATE_URL)
 
 # creating the Dog class with the following properties: breed, image, and filepath
 

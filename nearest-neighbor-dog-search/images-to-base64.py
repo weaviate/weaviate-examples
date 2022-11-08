@@ -1,5 +1,4 @@
 import os 
-import base64
 import shutil
 
 def clear_base64_images():

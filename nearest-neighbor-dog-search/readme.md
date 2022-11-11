@@ -1,35 +1,43 @@
-## Welcome to the Dog Search Demo! 
+# Welcome to the Dog Search Demo! 
 
-### Dataset 
+## Dataset 
 The dataset currently contains ten images of different dog breeds. You can also build on this and add your own images to the dataset!
 
-### To run this demo, follow the order below:
-1. Make sure you have Weaviate installed and set up. [Check out the documentation](https://weaviate.io/developers/weaviate/current/installation/index.html) for more information!
-2. Run the docker file 
-    ```bash
-    docker compose up
-    ```
-3. Run the schema file
-    ```bash
-    python create-schema.py
-    ```
-4. Run the images to base64 file 
-    ```bash
-    python images-to-base64.py
-    ```
-5. Upload the encoded images 
-    ```bash
-    python upload-data-objects.py
-    ```
+### To run this demo locally, follow the order below:
+Make sure you have Weaviate installed and set up. [Check out the documentation](https://weaviate.io/developers/weaviate/current/installation/index.html) for more information!
 
-### Run the application
-Run the Python Flask application and go to http://localhost:5000
+To spin up Weaviate run the following command from the `nearest-neighbor-dog-search` directory/folder:
 ```bash
-python flask-app/application.py 
+docker compose up -d
 ```
 
-### Run the query 
-Run the query to see dogs that are under 60 pounds
+### Run the application
+First install all the python package dependencies:
 ```bash
-python query.py
+pip install -r requirements.txt
+```
+
+Run the Python Flask application and go to http://localhost:5000
+```bash
+python3 app.py 
+```
+
+### Shutdown Weaviate
+To shutdown Weaviate run the following command from the `nearest-neighbor-dog-search` directory/folder:
+```bash
+docker compose down
+```
+### Run this demo in docker container
+
+In order to run the Weaviate AND Flask app in docker container run the following command:
+
+```bash
+docker compose -f ./docker-compose-flask.yml up -d --build
+```
+
+The application is running on http://localhost:80
+
+To shutdown the application and the Weaviate instance run the following command:
+```bash
+docker compose -f ./docker-compose-flask.yml down 
 ```

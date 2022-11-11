@@ -27,6 +27,9 @@ services:
     build: .
     ports:
       - "80:5000"
+    environment:
+      HOST: '0.0.0.0'
+      WEAVIATE_URL: 'http://weaviate:8080'
     depends_on:
       - "weaviate"
       - "i2v-neural"

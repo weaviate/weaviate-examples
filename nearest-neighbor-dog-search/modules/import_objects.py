@@ -1,42 +1,22 @@
-import os, re
+import re
+import os
 import weaviate
 
-WEAVIATE_URL = os.getenv('WEAVIATE_URL')
-if not WEAVIATE_URL:
-    WEAVIATE_URL = 'http://localhost:8080'
 
-def set_up_batch():
+def import_data(client: weaviate.Client):
     """
-    Prepare batching configuration to speed up deleting and importing data.
+    Process all images in [base64_images] folder and add import them into Dogs collection.
+
+    Parameters
+    ----------
+    client : weaviate.Client
+        The Weaviate client for which to import the data.
     """
+
     client.batch.configure(
         batch_size=100, 
         dynamic=True,
-        timeout_retries=3,
-        callback=None,
     )
-    
-def clear_up_dogs():
-    """
-    Remove all objects from the Dogs collection.
-    This is useful, if we want to rerun the import with different pictures.
-    """
-    with client.batch as batch:
-        batch.delete_objects(
-            class_name="Dog",
-            # same where operator as in the GraphQL API
-            where={
-                "operator": "NotEqual",
-                "path": ["breed"],
-                "valueString": "x"
-            },
-            output="verbose",
-        )
-
-def import_data():
-    """
-    Process all images in [base64_images] folder and add import them into Dogs collection
-    """
 
     with client.batch as batch:
         # Iterate over all .b64 files in the base64_images folder
@@ -61,10 +41,3 @@ def import_data():
             }
 
             batch.add_data_object(data_properties, "Dog")
-
-client = weaviate.Client(WEAVIATE_URL)
-set_up_batch()
-clear_up_dogs()
-import_data()
-
-print("The objects have been uploaded to Weaviate.")

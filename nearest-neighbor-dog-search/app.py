@@ -72,7 +72,8 @@ def list_images() -> list:
     else:
         return []
 
-    return [{"path": file_path} for file_path in os.listdir(img_path)]
+    return [{"path": file_path} for file_path in os.listdir(img_path) if ".DS_Store" not in file_path]
+
 
 
 # Defining the pages that will be on the website 

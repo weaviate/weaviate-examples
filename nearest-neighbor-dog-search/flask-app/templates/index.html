@@ -6,8 +6,12 @@
 <body>
     <div class = "uploadColumn">
         <form action = "{{ url_for('process_image') }}" method="post" enctype="multipart/form-data">
-            <input type="file" id="myFile" name="filepath">
-            <input type="submit">
+            <label class="file">
+                <img src="static/image-1.png" class="icon" />
+                <input type="file" id="myFile" name="filepath">
+                Upload Image
+            </label>
+            <input type="submit" class="button">
             {% if dog_image %}
             <br/>
             <img class="uploadedImg" 
@@ -16,15 +20,15 @@
             {% endif %}
         </form>
     </div>
-        
     <h2>RESULTS</h2>
-    <div class = "showColumn">
+    <ul class = "auto-grid">
         {% for x in content %}
-        <div class="imgCard">
+        <li class="imgCard">
             <img src = {{ "static/img/" + x["path"] }}> </img>
             <h4> {{ x["breed"] }} </h4>
-        </div>
+        </li>
         {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

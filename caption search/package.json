@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.1",
@@ -7,6 +10,7 @@
     "weaviate": "^0.0.14",
     "weaviate-client": "^2.11.1",
     "youtube-player": "^5.5.2",
-    "youtube-video-js": "^3.6.0"
+    "youtube-video-js": "^3.6.0",
+    "node-fetch": "^2.6.7"
   }
 }

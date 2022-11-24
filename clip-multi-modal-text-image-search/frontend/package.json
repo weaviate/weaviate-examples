@@ -12,6 +12,13 @@
     "weaviate-client": "^2.10.1",
     "web-vitals": "^1.0.1"
   },
+  "resolutions": {
+    "minimatch": "^3.0.5",
+    "shell-quote": "^1.7.3",
+    "loader-utils": "^2.0.4",
+    "ejs": "^3.1.7",
+    "node-fetch": "^2.6.7"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -20,8 +20,8 @@ images yourself!
 ## Run it yourself
 
 1. Start up Weaviate using `docker-compose up -d`
-2. Import the schema (the script will wait for Weaviate to be ready) using `bash create_schema.sh`
-3. Import the images using `bash import.sh`
+2. Import the schema (the script will wait for Weaviate to be ready) using `bash ./import/curl/create_schema.sh`
+3. Import the images using `bash ./import/curl/import.sh`
 4. To run the frontend navigate to the `./frontend` folder and run `yarn && yarn start`. Wait for your browser to open at `http://localhost:3000`
 
 ## How to run with your own images

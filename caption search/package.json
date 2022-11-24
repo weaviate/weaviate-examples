@@ -10,7 +10,11 @@
     "weaviate": "^0.0.14",
     "weaviate-client": "^2.11.1",
     "youtube-player": "^5.5.2",
-    "youtube-video-js": "^3.6.0",
-    "node-fetch": "^2.6.7"
+    "youtube-video-js": "^3.6.0"
+  },
+  "overrides": {
+    "isomorphic-fetch": {
+      "node-fetch": "^2.6.7"
+    }
   }
 }

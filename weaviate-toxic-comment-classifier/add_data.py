@@ -4,7 +4,11 @@ import pandas as pd
 #setting up client
 client = weaviate.Client("http://localhost:8080")
 
-client.schema.delete_all()
+#Checking if caption schema already exists, then delete it
+current_schemas = client.schema.get()['classes']
+for schema in current_schemas:
+    if schema['class']=='Comments':
+        client.schema.delete_class('Comments')
 #creating the schema
 comment_schema = {
     "class": "Comments",

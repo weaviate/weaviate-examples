@@ -29,7 +29,12 @@ def log(i: str) -> str:
 client = weaviate.Client("http://localhost:8080")
 print("Client created")
 
-client.schema.delete_all()
+#Checking if caption schema already exists, then delete it
+current_schemas = client.schema.get()['classes']
+for schema in current_schemas:
+    if schema['class']=='Vegetables':
+        client.schema.delete_class('Vegetables')
+
 # Create a schema to add vegetables
 class_obj = {
         "class": "Vegetables",

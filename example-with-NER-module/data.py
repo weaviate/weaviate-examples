@@ -19,7 +19,11 @@ def generate_uuid(class_name: str, identifier: str,
 client = weaviate.Client("http://localhost:8080")
 print("Client created (data.py)")
 
-client.schema.delete_all()
+#Checking if caption schema already exists, then delete it
+current_schemas = client.schema.get()['classes']
+for schema in current_schemas:
+    if schema['class']=='Caption':
+        client.schema.delete_class('Caption')
 
 # Here I have created a simple schema to add some data
 class_obj = {

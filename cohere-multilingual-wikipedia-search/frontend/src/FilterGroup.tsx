@@ -4,6 +4,7 @@ import { CaretRightOutlined } from "@ant-design/icons";
 import { Collapse, theme, Row, Col } from "antd";
 import SelectLanguages from "./SelectLanguages";
 import LimitPopularity from "./LimitPopularity";
+import AvailableLanguages from "./AvailableLanguages";
 
 const { Panel } = Collapse;
 
@@ -15,6 +16,9 @@ type Props = {
   popularity: [number, number];
   setPopularity: Dispatch<SetStateAction<[number, number]>>;
   popularityMinMax: [number, number];
+  availableLanguages: [number, number][];
+  availableLanguagesLabels: string[];
+  setAvailableLanguages: Dispatch<SetStateAction<[number, number]>>;
 };
 
 const FilterGroup = ({
@@ -25,6 +29,9 @@ const FilterGroup = ({
   popularity,
   setPopularity,
   popularityMinMax,
+  availableLanguages,
+  availableLanguagesLabels,
+  setAvailableLanguages,
 }: Props) => {
   const { token } = theme.useToken();
 
@@ -112,7 +119,11 @@ const FilterGroup = ({
           style={{ background: token.colorBgContainer }}
         >
           <Panel header="Available languages" key="1" style={panelStyle}>
-            <p>Bar</p>
+            <AvailableLanguages
+              labels={availableLanguagesLabels}
+              options={availableLanguages}
+              setAvailableLanguages={setAvailableLanguages}
+            />
           </Panel>
         </Collapse>
       </Col>

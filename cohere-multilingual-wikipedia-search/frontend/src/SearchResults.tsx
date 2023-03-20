@@ -1,23 +1,19 @@
-import React from 'react';
-import { List } from 'antd';
-import type { Result } from './weaviate_search'
+import React from "react";
+import { List } from "antd";
+import type { Result } from "./weaviate_search";
 
 type Props = {
-  data: Result[]
-}
+  data: Result[];
+};
 
-
-const SearchResults = ({data,}: Props) => (
+const SearchResults = ({ data }: Props) => (
   <List
     itemLayout="horizontal"
     dataSource={data}
-    locale={{emptyText: "Enter a query and hit Search!"}}
+    locale={{ emptyText: "Enter a query and hit Search!" }}
     renderItem={(item, index) => (
       <List.Item>
-        <List.Item.Meta
-          title={item.title}
-          description={item.text}
-        />
+        <List.Item.Meta title={item.title} description={item.text} />
       </List.Item>
     )}
   />

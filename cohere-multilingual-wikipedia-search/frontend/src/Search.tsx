@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import type { FC } from "react";
 import FilterGroup from "./FilterGroup";
 import SelectSearchType from "./SelectSearchType";
-import SearchResults from "./SearchResults"
+import SearchResults from "./SearchResults";
 import { Input } from "antd";
 import weaviate from "weaviate-ts-client";
 import searchWeaviate from "./weaviate_search";
+import type { FilterInput } from "./weaviate_search";
 import type { Result } from "./weaviate_search";
 
 const { Search } = Input;
@@ -63,11 +64,22 @@ const SearchArea: FC = () => {
 
   const onSearch = (textQuery: string) => {
     if (textQuery === "") {
-      setResults([])
-      return
+      setResults([]);
+      return;
     }
 
-    searchWeaviate(client, textQuery).then(setResults).catch(console.error);
+    const filter: FilterInput = {
+      languageIdsSelected: languageIds,
+      allLanguageIds: defaultLanguageIds,
+      searchType: searchType,
+      popularitySelected: popularity,
+      popularityMinMax: defaultPopularity,
+      availableLanguagesSelected: availableLanguagesSelected,
+    };
+
+    searchWeaviate(client, textQuery, filter)
+      .then(setResults)
+      .catch(console.error);
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import type { FC } from "react";
 import FilterGroup from "./FilterGroup";
 import SelectSearchType from "./SelectSearchType";
+import SearchResults from "./SearchResults"
 import { Input } from "antd";
 import weaviate from "weaviate-ts-client";
 import searchWeaviate from "./weaviate_search";
@@ -61,6 +62,11 @@ const SearchArea: FC = () => {
   const [results, setResults] = useState<Result[]>([]);
 
   const onSearch = (textQuery: string) => {
+    if (textQuery === "") {
+      setResults([])
+      return
+    }
+
     searchWeaviate(client, textQuery).then(setResults).catch(console.error);
   };
 
@@ -92,7 +98,7 @@ const SearchArea: FC = () => {
         size="large"
         onSearch={onSearch}
       />
-      {JSON.stringify(results, null, "  ")}
+      <SearchResults data={results} />
     </div>
   );
 };

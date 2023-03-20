@@ -13,6 +13,7 @@ const searchWeaviate = (
     .get()
     .withClassName("Articles")
     .withFields("title text")
+    .withLimit(10)
     .withBm25({
       query: query,
     })

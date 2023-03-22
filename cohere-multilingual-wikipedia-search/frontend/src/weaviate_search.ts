@@ -31,21 +31,23 @@ const searchWeaviate = (
   }
 
   switch (filterInput.searchType) {
-    case "lexical":
+    case "Lexical":
       q = q.withBm25({
         query: query,
       });
       break;
-    case "hybrid":
+    case "Hybrid":
       q = q.withHybrid({
         query: query,
       });
       break;
-    case "semantic":
+    case "Semantic":
       q = q.withNearText({
-        query: query,
+        concepts: [query],
       });
       break;
+    default:
+      throw new Error("unrecognized search type")
   }
 
   return q.do().then((res: any) => {
@@ -125,7 +127,7 @@ const buildAvailableLanguagesFilter = (input: FilterInput): object => {
   if (input.availableLanguagesSelected[0] !== -1) {
     ops.push({
       operator: "GreaterThanEqual",
-      valueInt: input.availableLanguagesSelected[0],
+      valueNumber: input.availableLanguagesSelected[0],
       path: ["num_langs"],
     });
   }
@@ -133,7 +135,7 @@ const buildAvailableLanguagesFilter = (input: FilterInput): object => {
   if (input.availableLanguagesSelected[1] !== -1) {
     ops.push({
       operator: "LessThanEqual",
-      valueInt: input.availableLanguagesSelected[1],
+      valueNumber: input.availableLanguagesSelected[1],
       path: ["num_langs"],
     });
   }

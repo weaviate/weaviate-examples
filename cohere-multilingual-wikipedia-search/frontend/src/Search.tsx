@@ -13,7 +13,9 @@ const { Search } = Input;
 
 const client = weaviate.client({
   scheme: "https",
-  host: "cohere-wiki-demo.weaviate.network",
+  host: "cohere-demo.weaviate.network",
+  headers: {Authorization: 'Bearer add-key'} 
+
 });
 
 const searchTypes: string[] = ["Semantic", "Lexical", "Hybrid"];

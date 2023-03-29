@@ -29,7 +29,7 @@ const Logos: FC = () => (
       The Cohere & Weaviate Multilingual Wikipedia Search
     </Title>
     <p style={{ textAlign: "center", maxWidth: "60%", margin: "15px auto" }}>
-      Search through 8M Multilingual Wikipedia Paragraphs using Semantic,
+      Search through 10M Multilingual Wikipedia Paragraphs using Semantic,
       Lexical, or Hybrid Search with arbitrary filters!
     </p>
   </>

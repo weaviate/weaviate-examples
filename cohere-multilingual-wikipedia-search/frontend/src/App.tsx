@@ -23,7 +23,7 @@ const App: FC = () => (
         </Content>
       </Layout>
       <Footer style={{ textAlign: "center" }}>
-        Built with &lt;3 using Cohere Embeddings and Weaviate
+        Built with ❤️ using Cohere Embeddings and Weaviate
       </Footer>
     </Layout>
   </div>

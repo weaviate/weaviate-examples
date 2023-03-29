@@ -124,3 +124,5 @@ venv.bak/
 .dmypy.json
 dmypy.json
 **/.ipynb_checkpoints
+# Local Netlify folder
+.netlify

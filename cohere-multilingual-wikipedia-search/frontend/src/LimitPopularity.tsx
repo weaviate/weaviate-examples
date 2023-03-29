@@ -24,7 +24,7 @@ const LimitPopularity = ({ minMax, popularity, setPopularity }: Props) => {
       </p>
       <Slider
         range
-        step={1000}
+        step={100}
         min={minMax[0]}
         max={minMax[1]}
         value={popularity}

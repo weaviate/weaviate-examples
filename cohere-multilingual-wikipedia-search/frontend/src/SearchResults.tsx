@@ -13,7 +13,7 @@ const SearchResults = ({ data }: Props) => (
     locale={{ emptyText: "Enter a query and hit Search!" }}
     renderItem={(item, index) => (
       <List.Item>
-        <List.Item.Meta title={item.title} description={item.text} />
+        <List.Item.Meta title={item.text} description={item.title} />
       </List.Item>
     )}
   />

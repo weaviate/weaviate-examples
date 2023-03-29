@@ -11,17 +11,40 @@ import type { Result } from "./weaviate_search";
 
 const { Search } = Input;
 
+if (!process.env.REACT_APP_WEAVIATE_HOST) {
+  throw new Error("missing REACT_APP_WEAVIATE_HOST");
+}
+
+if (!process.env.REACT_APP_WEAVIATE_API_KEY) {
+  throw new Error("missing REACT_APP_WEAVIATE_API_KEY");
+}
+
 const client = weaviate.client({
   scheme: "https",
-  host: "cohere-demo.weaviate.network",
-  headers: {Authorization: 'Bearer add-key'} 
-
+  host: process.env.REACT_APP_WEAVIATE_HOST,
+  // The API_KEY will leak to the user, so make sure you only ever use an
+  // API_KEY that has permissions which you want to give to anonymous users.
+  // For example, read-only
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_WEAVIATE_API_KEY}`,
+  },
 });
 
 const searchTypes: string[] = ["Semantic", "Lexical", "Hybrid"];
-const languageLabels = ["English", "German", "French", "Dutch"];
+const languageLabels = [
+  "English",
+  "German",
+  "French",
+  "Spanish",
+  "Italian",
+  "Japanese",
+  "Arabic",
+  "Chinese",
+  "Korean",
+  "Hindi",
+];
 const defaultLanguageIds = languageLabels.map((_, i) => i);
-const defaultPopularity: [number, number] = [10, 100000];
+const defaultPopularity: [number, number] = [0, 5000];
 const availableLanguagesLabel = (input: [number, number]): string => {
   if (input[0] === -1 && input[1] === -1) {
     return "No Restrictions";

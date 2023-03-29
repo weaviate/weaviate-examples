@@ -39,6 +39,7 @@ const searchWeaviate = (
     case "Hybrid":
       q = q.withHybrid({
         query: query,
+        alpha: 0.7,
       });
       break;
     case "Semantic":
@@ -47,7 +48,7 @@ const searchWeaviate = (
       });
       break;
     default:
-      throw new Error("unrecognized search type")
+      throw new Error("unrecognized search type");
   }
 
   return q.do().then((res: any) => {

@@ -12,6 +12,7 @@ export type FilterInput = {
 export type Result = {
   text: string;
   title: string;
+  url: string;
 };
 
 const searchWeaviate = (
@@ -23,7 +24,7 @@ const searchWeaviate = (
   let q = client.graphql
     .get()
     .withClassName("Articles")
-    .withFields("title text")
+    .withFields("title text url")
     .withLimit(10);
 
   if (filter) {
@@ -59,7 +60,8 @@ const searchWeaviate = (
     return res.data.Get.Articles.map((obj: any) => {
       let out: Result = {
         text: typeof obj.text === "string" ? obj.text : "",
-        title: typeof obj.text === "string" ? obj.title : "",
+        title: typeof obj.title === "string" ? obj.title : "",
+        url: typeof obj.url === "string" ? obj.url : "",
       };
       return out;
     });

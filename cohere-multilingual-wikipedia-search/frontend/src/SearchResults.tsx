@@ -12,7 +12,7 @@ const SearchResults = ({ data }: Props) => (
     dataSource={data}
     locale={{ emptyText: "Enter a query and hit Search!" }}
     renderItem={(item, index) => (
-      <List.Item>
+      <List.Item actions={[<a target="_blank" href={item.url}>view</a>]}>
         <List.Item.Meta title={item.text} description={item.title} />
       </List.Item>
     )}

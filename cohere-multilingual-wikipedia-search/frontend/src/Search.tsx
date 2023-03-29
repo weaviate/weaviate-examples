@@ -86,12 +86,15 @@ const SearchArea: FC = () => {
   >(availableLanguages[0]);
   const [searchType, setSearchType] = useState<string>(searchTypes[0]);
   const [results, setResults] = useState<Result[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onSearch = (textQuery: string) => {
     if (textQuery === "") {
       setResults([]);
       return;
     }
+
+    setLoading(true);
 
     const filter: FilterInput = {
       languageIdsSelected: languageIds,
@@ -104,7 +107,8 @@ const SearchArea: FC = () => {
 
     searchWeaviate(client, textQuery, filter)
       .then(setResults)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -135,7 +139,7 @@ const SearchArea: FC = () => {
         size="large"
         onSearch={onSearch}
       />
-      <SearchResults data={results} />
+      <SearchResults data={results} loading={loading} />
     </div>
   );
 };

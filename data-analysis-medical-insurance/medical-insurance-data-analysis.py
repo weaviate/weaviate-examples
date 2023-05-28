@@ -69,6 +69,7 @@ for _, row in dataset.iterrows():
         "region": row['region'],
         "charges": float(row['charges'])
     }
+    print("loading...")
     client.data_object.create(person, "Person")
 
 # Perform data analysis
@@ -109,10 +110,10 @@ for aggregation in aggregations:
     count = aggregation.get("smoker", {}).get("count")
     print(sex, "-", count)
 
-# Example 3: Retrieve persons with high charges who are smokers
+# Example 3: Retrieve people with high charges who are smokers
 
 print("")
-print("Retrieve persons with high charges who are smokers:")
+print("Retrieve people with high charges who are smokers:")
 content = {
     "operator": "And",
     "operands": [
@@ -141,3 +142,42 @@ for output in results:
     children = output.get("children", {})
     print("Age:", age, ", Sex:", sex, ", Region:", region, ", Charges:", charges, ", Bmi:", bmi, ", Children:",
           children)
+
+# Example 4: Retrieve people  who are smokers  with top 5 BMI and high charges
+print("")
+print("Retrieve individuals with top 5 BMI who are smokers and have high charges:")
+
+result = client.query.get("Person", ["age", "sex", "charges", "region", "bmi", "children"]) \
+    .with_where(content) \
+    .with_sort({"path": ["bmi"], "order": "desc"}) \
+    .with_limit(5) \
+    .do()
+
+results = result.get("data", {}).get("Get", {}).get("Person", {})
+for output in results:
+    age = output.get("age", {})
+    sex = output.get("sex", {})
+    region = output.get("region", {})
+    charges = output.get("charges", {})
+    bmi = output.get("bmi", {})
+    children = output.get("children", {})
+    print("Age:", age, ", Sex:", sex, ", Region:", region, ", Charges:", charges, ", BMI:", bmi, ", Children:",
+          children)
+
+# Example 5: Retrieve people with the highest insurance charges within each age group
+print("")
+print("Individuals with the highest insurance charges within each age group:")
+
+result = client.query.aggregate("Person") \
+    .with_group_by_filter(["age"]) \
+    .with_fields("charges {maximum}") \
+    .with_fields("groupedBy {path value}")\
+    .do()
+
+aggregations = result.get("data", {}).get("Aggregate", {}).get("Person", {})
+for aggregation in aggregations:
+    group_by_path = aggregation.get("groupedBy", {}).get("path")
+    group_by_value = aggregation.get("groupedBy", {}).get("value")
+    charges_max = aggregation.get("charges", {}).get("maximum")
+
+    print(f"Grouped by: {group_by_path} = {group_by_value}, Max Charges: {charges_max}")

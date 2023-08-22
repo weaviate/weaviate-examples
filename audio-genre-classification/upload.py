@@ -21,6 +21,10 @@ def upload_image():
 	if 'audio_upload' not in request.files:
 		flash('No file part')
 		return redirect(request.url)
+	
+	# make sure we have the upload folder, as it's ignored due to .gitignore
+	if not os.path.exists(app.config['UPLOAD_FOLDER']):
+		os.makedirs(app.config['UPLOAD_FOLDER'])
 
 	file = request.files['audio_upload']
 

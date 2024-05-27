@@ -1,5 +1,5 @@
 import React, { ReactElement, useCallback, useEffect, useState } from 'react'
-import { WeaviateClient, PersonImage } from '../weaviate/WeaviateClient'
+import { WeaviateClientJS, PersonImage } from '../weaviate/WeaviateClient'
 import Upload, { FilePondBase64File } from '../components/Upload'
 import logo from './logo.svg'
 import './style.css'
@@ -10,7 +10,7 @@ export default function App(): ReactElement<HTMLElement> {
 
   const fetch = useCallback(() => {
     async function fetchImages() {
-      const client: WeaviateClient = new WeaviateClient()
+      const client: WeaviateClientJS = new WeaviateClientJS()
       let images: PersonImage[] = []
       if (files && files.length > 0) {
         images = await client.findImage(files[0].getFileEncodeBase64String())

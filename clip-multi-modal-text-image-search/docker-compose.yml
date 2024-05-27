@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   weaviate:
-    image: docker.io/semitechnologies/weaviate:1.14.1
+    image: docker.io/semitechnologies/weaviate:1.24.14
     restart: on-failure:0
     ports:
       - "8080:8080"
@@ -15,4 +15,4 @@ services:
       ENABLE_MODULES: "multi2vec-clip"
 
   multi2vec-clip:
-    image: semitechnologies/multi2vec-clip:sentence-transformers-clip-ViT-B-32-multilingual-v1-1.1.4
+    image: docker.io/semitechnologies/multi2vec-clip:xlm-roberta-base-ViT-B-32-laion5b_s13b_b90k-1.2.0

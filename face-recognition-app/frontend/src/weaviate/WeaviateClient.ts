@@ -1,4 +1,4 @@
-const weaviate = require('weaviate-client');
+const weaviatejs = require('weaviate-client');
 
 export interface PersonImage {
   filename: string
@@ -7,10 +7,10 @@ export interface PersonImage {
   certainty: number | null | undefined
 }
 
-export class WeaviateClient {
+export class WeaviateClientJS {
   private client: any
   constructor() {
-    this.client = weaviate.client({
+    this.client = weaviatejs.client({
       scheme: 'http',
       host: 'localhost:8080',
     })

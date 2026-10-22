@@ -12,7 +12,7 @@ services:
       - '10000s'
       - --write-timeout
       - '10000s'
-    image: semitechnologies/weaviate:1.9.0
+    image: semitechnologies/weaviate:1.39.13
     restart: on-failure:0
     ports:
      - "9999:8080"

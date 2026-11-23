@@ -9,7 +9,7 @@ services:
     - '8080'
     - --scheme
     - http
-    image: semitechnologies/weaviate:1.16.0
+    image: semitechnologies/weaviate:1.39.13
     restart: on-failure:0
     environment:
       IMAGE_INFERENCE_API: 'http://i2v-neural:8080'
